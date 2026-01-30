@@ -33,7 +33,7 @@ backend/node_modules/
 frontend/node_modules/
 
 #UPLOADS
-Backend/upload
+backend/upload
 
 #BUILDS  FILES
 frontend/dist/
