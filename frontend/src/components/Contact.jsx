@@ -17,7 +17,7 @@ export default function Contact() {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:5000/api/messages", form);
+      await api.post("/api/messages", form);
       alert("Message sent successfully ✅");
       setForm({ name: "", email: "", message: "" });
     } catch (error) {

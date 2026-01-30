@@ -7,7 +7,7 @@ export default function BlogPage() {
   const [blog, setBlog] = useState(null);
 
   useEffect(() => {
-    axios
+    api
       .get(`http://localhost:5000/api/blogs/slug/${slug}`)
       .then((res) => setBlog(res.data));
   }, [slug]);
@@ -17,7 +17,7 @@ export default function BlogPage() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-20">
       <img
-        src={`http://localhost:5000/uploads/${blog.image}`}
+        src={`${import.meta.env.VITE_API_URL}/uploads/${blog.image}`}
         className="w-full rounded-xl mb-6"
       />
 

@@ -8,7 +8,7 @@ export default function ProjectDetails() {
   const [project, setProject] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/projects/${id}`).then((res) => {
+    api.get(`/api/projects/${id}`).then((res) => {
       setProject(res.data);
     });
   }, []);
@@ -37,7 +37,7 @@ export default function ProjectDetails() {
 
       {project.image && (
         <img
-          src={`http://localhost:5000/uploads/${project.image}`}
+          src={`${import.meta.env.VITE_API_URL}/uploads/${project.image}`}
           alt={project.title}
           className="w-full h-96 object-cover rounded-xl mb-6 border-2 border-black"
         />

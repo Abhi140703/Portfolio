@@ -6,7 +6,7 @@ export default function Projects() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/projects").then((res) => {
+    api.get("/api/projects").then((res) => {
       setProjects(res.data.slice(0, 3)); // Show only 3 latest
     });
   }, []);
@@ -25,7 +25,7 @@ export default function Projects() {
           >
             {project.image && (
               <img
-                src={`http://localhost:5000/${project.image}`}
+                src={`${import.meta.env.VITE_API_URL}/${project.image}`}
                 alt={project.title}
                 className="w-full h-48 object-cover"
               />
