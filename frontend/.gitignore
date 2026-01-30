@@ -23,17 +23,4 @@ dist-ssr
 *.sln
 *.sw?  
 
-#ENV FILES
-.env 
-backend/.env 
 
-#NODE MODULES
-node_modules
-backend/node_modules/
-frontend/node_modules/
-
-#UPLOADS
-backend/upload
-
-#BUILDS  FILES
-frontend/dist/
