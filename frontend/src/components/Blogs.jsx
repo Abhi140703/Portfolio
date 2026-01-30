@@ -10,7 +10,7 @@ export default function Blogs() {
   }, []);
 
   const fetchLatestBlogs = async () => {
-    const res = await api.get("http://localhost:5000/api/blogs/latest");
+    const res = await api.get("/api/blogs/latest");
     setBlogs(res.data);
   };
 
