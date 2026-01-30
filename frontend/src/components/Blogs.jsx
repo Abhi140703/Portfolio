@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api/api";
 import { Link } from "react-router-dom";
 
 export default function Blogs() {
@@ -10,7 +10,7 @@ export default function Blogs() {
   }, []);
 
   const fetchLatestBlogs = async () => {
-    const res = await axios.get("http://localhost:5000/api/blogs/latest");
+    const res = await api.get("http://localhost:5000/api/blogs/latest");
     setBlogs(res.data);
   };
 
