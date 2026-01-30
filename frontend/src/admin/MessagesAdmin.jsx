@@ -7,7 +7,8 @@ export default function MessagesAdmin() {
   const token = localStorage.getItem("token");
 
   const fetchMessages = async () => {
-    const res = await axios.get("http://localhost:5000/api/messages", {
+    const res = await axios.get("import.meta.env.VITE_API_URL
+/api/messages", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -18,7 +19,8 @@ export default function MessagesAdmin() {
   const deleteMessage = async (id) => {
     if (!window.confirm("Delete this message?")) return;
 
-    await axios.delete(`http://localhost:5000/api/messages/${id}`, {
+    await axios.delete(`import.meta.env.VITE_API_URL
+/api/messages/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

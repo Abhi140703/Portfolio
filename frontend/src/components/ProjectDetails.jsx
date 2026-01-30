@@ -8,9 +8,14 @@ export default function ProjectDetails() {
   const [project, setProject] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/projects/${id}`).then((res) => {
-      setProject(res.data);
-    });
+    axios
+      .get(
+        `import.meta.env.VITE_API_URL
+/api/projects/${id}`,
+      )
+      .then((res) => {
+        setProject(res.data);
+      });
   }, []);
 
   if (!project) return <p className="text-center mt-20">Loading...</p>;
@@ -37,7 +42,8 @@ export default function ProjectDetails() {
 
       {project.image && (
         <img
-          src={`http://localhost:5000/uploads/${project.image}`}
+          src={`import.meta.env.VITE_API_URL
+/uploads/${project.image}`}
           alt={project.title}
           className="w-full h-96 object-cover rounded-xl mb-6 border-2 border-black"
         />

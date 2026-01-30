@@ -6,7 +6,8 @@ export default function ProjectList() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/projects").then((res) => {
+    axios.get("import.meta.env.VITE_API_URL
+/api/projects").then((res) => {
       setProjects(res.data);
     });
   }, []);
@@ -35,7 +36,8 @@ export default function ProjectList() {
           >
             {project.image && (
               <img
-                src={`http://localhost:5000/uploads/${project.image}`}
+                src={`import.meta.env.VITE_API_URL
+/uploads/${project.image}`}
                 alt={project.title}
                 className="w-full h-48 object-cover"
               />

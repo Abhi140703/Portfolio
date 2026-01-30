@@ -10,14 +10,16 @@ export default function ProjectsAdmin() {
   }, []);
 
   const loadProjects = async () => {
-    const res = await axios.get("http://localhost:5000/api/projects");
+    const res = await axios.get("import.meta.env.VITE_API_URL
+/api/projects");
     setProjects(res.data);
   };
 
   const handleDelete = async (id) => {
     const token = localStorage.getItem("token");
 
-    await axios.delete(`http://localhost:5000/api/projects/${id}`, {
+    await axios.delete(`import.meta.env.VITE_API_URL
+/api/projects/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
