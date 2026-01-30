@@ -17,9 +17,7 @@ export default function Contact() {
     e.preventDefault();
 
     try {
-      await axios.post("`${import.meta.env.VITE_API_URL}
-
-/api/messages", form);
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/messages`, form);
       alert("Message sent successfully ✅");
       setForm({ name: "", email: "", message: "" });
     } catch (error) {

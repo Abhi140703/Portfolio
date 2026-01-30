@@ -10,7 +10,7 @@ export default function BlogList() {
   }, []);
 
   const fetchBlogs = async () => {
-    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/blogs`);
+    const res = await api.get(`${import.meta.env.VITE_API_URL}/api/blogs`);
     setBlogs(res.data);
   };
 
@@ -37,9 +37,7 @@ export default function BlogList() {
           >
             {blog.image && (
               <img
-                src={``${import.meta.env.VITE_API_URL}
-
-/uploads/${blog.image}`}
+                src={`${import.meta.env.VITE_API_URL}/uploads/${blog.image}`}
                 alt={blog.title}
                 className="w-full h-48 object-cover"
               />

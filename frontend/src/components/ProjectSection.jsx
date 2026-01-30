@@ -13,9 +13,7 @@ export default function ProjectSection() {
 
   const loadProjects = async () => {
     try {
-      const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/projects`,
-      );
+      const res = await api.get(`${import.meta.env.VITE_API_URL}/api/projects`);
       setProjects(res.data.slice(0, 3)); // Show only 3 latest
     } catch (err) {
       console.log("PROJECT FETCH ERROR:", err);

@@ -7,14 +7,11 @@ export default function MessagesAdmin() {
   const token = localStorage.getItem("token");
 
   const fetchMessages = async () => {
-    const res = await axios.get(
-      `${import.meta.env.VITE_API_URL}/api/messages`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+    const res = await api.get(`${import.meta.env.VITE_API_URL}/api/messages`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
-    );
+    });
     setMessages(res.data);
   };
 

@@ -10,7 +10,7 @@ export default function ProjectsAdmin() {
   }, []);
 
   const loadProjects = async () => {
-    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/projects`);
+    const res = await api.get(`${import.meta.env.VITE_API_URL}/api/projects`);
     setProjects(res.data);
   };
 
