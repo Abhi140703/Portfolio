@@ -7,9 +7,7 @@ export default function BlogPage() {
   const [blog, setBlog] = useState(null);
 
   useEffect(() => {
-    api
-      .get(`http://localhost:5000/api/blogs/slug/${slug}`)
-      .then((res) => setBlog(res.data));
+    api.get(`/api/blogs/slug/${slug}`).then((res) => setBlog(res.data));
   }, [slug]);
 
   if (!blog) return <p className="text-center py-20">Loading...</p>;
