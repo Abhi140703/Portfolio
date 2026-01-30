@@ -10,7 +10,8 @@ export default function ProjectDetails() {
   useEffect(() => {
     axios
       .get(
-        `import.meta.env.VITE_API_URL
+        ``${import.meta.env.VITE_API_URL}
+
 /api/projects/${id}`,
       )
       .then((res) => {
@@ -42,7 +43,8 @@ export default function ProjectDetails() {
 
       {project.image && (
         <img
-          src={`import.meta.env.VITE_API_URL
+          src={``${import.meta.env.VITE_API_URL}
+
 /uploads/${project.image}`}
           alt={project.title}
           className="w-full h-96 object-cover rounded-xl mb-6 border-2 border-black"

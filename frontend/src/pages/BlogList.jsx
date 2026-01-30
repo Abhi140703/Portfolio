@@ -6,7 +6,8 @@ export default function BlogList() {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    axios.get("import.meta.env.VITE_API_URL
+    axios.get("`${import.meta.env.VITE_API_URL}
+
 /api/blogs").then((res) => {
       setBlogs(res.data);
     });
@@ -24,7 +25,8 @@ export default function BlogList() {
             className="bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition"
           >
             <img
-              src={`import.meta.env.VITE_API_URL
+              src={``${import.meta.env.VITE_API_URL}
+
 /uploads/${blog.image}`}
               className="w-full h-48 object-cover"
             />

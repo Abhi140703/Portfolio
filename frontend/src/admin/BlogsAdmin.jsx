@@ -11,8 +11,7 @@ export default function BlogsAdmin() {
 
   const fetchBlogs = async () => {
     try {
-      const res = await axios.get("import.meta.env.VITE_API_URL
-/api/blogs");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/blogs`);
       setBlogs(res.data);
     } catch (err) {
       console.log("Error fetching blogs:", err);
@@ -23,8 +22,7 @@ export default function BlogsAdmin() {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.delete(`import.meta.env.VITE_API_URL
-/api/blogs/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -45,8 +43,7 @@ export default function BlogsAdmin() {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        `import.meta.env.VITE_API_URL
-/api/blogs/${editingBlog._id}`,
+        `${import.meta.env.VITE_API_URL}/api/blogs/${editingBlog._id}`,
         editingBlog,
         {
           headers: {

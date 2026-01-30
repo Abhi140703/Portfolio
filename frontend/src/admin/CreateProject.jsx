@@ -21,13 +21,16 @@ export default function CreateProject() {
     formData.append("image", image);
 
     try {
-      await axios.post("import.meta.env.VITE_API_URL
-/api/projects", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/projects`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
         },
-      });
+      );
 
       alert("✅ Project created successfully");
 
