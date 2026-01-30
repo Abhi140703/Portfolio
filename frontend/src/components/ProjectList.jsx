@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import api from "../api/api";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function ProjectList() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    api.get(`${import.meta.env.VITE_API_URL}/api/projects`).then((res) => {
+    axios.get("http://localhost:5000/api/projects").then((res) => {
       setProjects(res.data);
     });
   }, []);
@@ -35,7 +35,7 @@ export default function ProjectList() {
           >
             {project.image && (
               <img
-                src={`${import.meta.env.VITE_API_URL}/uploads/${project.image}`}
+                src={`http://localhost:5000/uploads/${project.image}`}
                 alt={project.title}
                 className="w-full h-48 object-cover"
               />

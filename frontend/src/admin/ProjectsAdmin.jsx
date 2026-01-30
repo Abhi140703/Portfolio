@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../api/api";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function ProjectsAdmin() {

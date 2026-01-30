@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../api/api";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
 
@@ -13,7 +13,7 @@ export default function ProjectSection() {
 
   const loadProjects = async () => {
     try {
-      const res = await api.get(`${import.meta.env.VITE_API_URL}/api/projects`);
+      const res = await axios.get("http://localhost:5000/api/projects");
       setProjects(res.data.slice(0, 3)); // Show only 3 latest
     } catch (err) {
       console.log("PROJECT FETCH ERROR:", err);
@@ -51,7 +51,7 @@ export default function ProjectSection() {
             {/* IMAGE */}
             {p.image ? (
               <img
-                src={`${import.meta.env.VITE_API_URL}/uploads/${p.image}`}
+                src={`http://localhost:5000/uploads/${p.image}`}
                 className="w-full h-48 object-cover"
                 alt={p.title}
               />

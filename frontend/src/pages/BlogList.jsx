@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import api from "../api/api";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function BlogList() {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    api.get(`${import.meta.env.VITE_API_URL}/api/blogs`).then((res) => {
+    axios.get("http://localhost:5000/api/blogs").then((res) => {
       setBlogs(res.data);
     });
   }, []);
@@ -23,7 +23,7 @@ export default function BlogList() {
             className="bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition"
           >
             <img
-              src={`${import.meta.env.VITE_API_URL}/uploads/${blog.image}`}
+              src={`http://localhost:5000/uploads/${blog.image}`}
               className="w-full h-48 object-cover"
             />
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../api/api";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function Blogs() {
@@ -10,9 +10,7 @@ export default function Blogs() {
   }, []);
 
   const fetchLatestBlogs = async () => {
-    const res = await api.get(
-      `${import.meta.env.VITE_API_URL}/api/blogs/latest`,
-    );
+    const res = await axios.get("http://localhost:5000/api/blogs/latest");
     setBlogs(res.data);
   };
 
@@ -48,7 +46,7 @@ export default function Blogs() {
             >
               {blog.image && (
                 <img
-                  src={`${import.meta.env.VITE_API_URL}/uploads/${blog.image}`}
+                  src={`http://localhost:5000/uploads/${blog.image}`}
                   alt={blog.title}
                   className="w-full h-48 object-cover"
                 />

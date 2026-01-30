@@ -1,5 +1,5 @@
 import { useState } from "react";
-import api from "../api/api";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function Contact() {
@@ -17,7 +17,7 @@ export default function Contact() {
     e.preventDefault();
 
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/messages`, form);
+      await axios.post("http://localhost:5000/api/messages", form);
       alert("Message sent successfully ✅");
       setForm({ name: "", email: "", message: "" });
     } catch (error) {

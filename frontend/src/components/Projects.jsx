@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import api from "../api/api";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    api.get(`${import.meta.env.VITE_API_URL}/api/projects`).then((res) => {
+    axios.get("http://localhost:5000/api/projects").then((res) => {
       setProjects(res.data.slice(0, 3)); // Show only 3 latest
     });
   }, []);
@@ -25,7 +25,7 @@ export default function Projects() {
           >
             {project.image && (
               <img
-                src={`${import.meta.env.VITE_API_URL}/${project.image}`}
+                src={`http://localhost:5000/${project.image}`}
                 alt={project.title}
                 className="w-full h-48 object-cover"
               />

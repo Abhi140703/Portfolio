@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import api from "../api/api";
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function BlogPage() {
@@ -8,7 +8,7 @@ export default function BlogPage() {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/blogs/slug/${slug}`)
+      .get(`http://localhost:5000/api/blogs/slug/${slug}`)
       .then((res) => setBlog(res.data));
   }, [slug]);
 
@@ -17,7 +17,7 @@ export default function BlogPage() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-20">
       <img
-        src={`${import.meta.env.VITE_API_URL}/uploads/${blog.image}`}
+        src={`http://localhost:5000/uploads/${blog.image}`}
         className="w-full rounded-xl mb-6"
       />
 
