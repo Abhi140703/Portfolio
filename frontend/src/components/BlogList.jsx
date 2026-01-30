@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api/api";
 import { Link } from "react-router-dom";
 
 export default function BlogList() {
@@ -10,7 +10,7 @@ export default function BlogList() {
   }, []);
 
   const fetchBlogs = async () => {
-    const res = await axios.get("http://localhost:5000/api/blogs");
+    const res = await api.get("/api/blogs");
     setBlogs(res.data);
   };
 
@@ -37,7 +37,7 @@ export default function BlogList() {
           >
             {blog.image && (
               <img
-                src={`http://localhost:5000/uploads/${blog.image}`}
+                src={`${import.meta.env.VITE_API_URL}/uploads/${blog.image}`}
                 alt={blog.title}
                 className="w-full h-48 object-cover"
               />

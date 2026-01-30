@@ -46,7 +46,7 @@ export default function Blogs() {
             >
               {blog.image && (
                 <img
-                  src={`http://localhost:5000/uploads/${blog.image}`}
+                  src={`${import.meta.env.VITE_API_URL}/uploads/${blog.image}`}
                   alt={blog.title}
                   className="w-full h-48 object-cover"
                 />

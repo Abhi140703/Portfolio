@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import api from "../api/api";
 
 export default function BlogDetails() {
   const { slug } = useParams();
   const [blog, setBlog] = useState(null);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/blogs/slug/${slug}`)
+    api
+      .get(`/api/blogs/slug/${slug}`)
       .then((res) => setBlog(res.data))
       .catch((err) => console.log(err));
   }, [slug]);
@@ -36,7 +36,7 @@ export default function BlogDetails() {
 
       {blog.image && (
         <img
-          src={`http://localhost:5000/uploads/${blog.image}`}
+          src={`${import.meta.env.VITE_API_URL} /uploads/${blog.image}`}
           alt={blog.title}
           className="w-full h-96 object-cover rounded-xl mb-6 border-2 border-black "
         />
