@@ -3,6 +3,8 @@ const router = express.Router();
 const Project = require("../models/Project");
 const auth = require("../middleware/auth");
 const multer = require("multer");
+const upload = require("../middleware/upload");
+
 
 console.log("✅ projectRoutes file loaded");
 
@@ -22,7 +24,7 @@ router.post("/", auth, upload.single("image"), async (req, res) => {
       title: req.body.title,
       description: req.body.description,
       link: req.body.link,
-      image: req.file ? req.file.filename : null,
+      image: req.file ? req.file.path : null,
     });
 
     await project.save();
