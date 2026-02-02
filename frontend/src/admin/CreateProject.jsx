@@ -21,7 +21,7 @@ export default function CreateProject() {
     formData.append("image", image);
 
     try {
-      await axios.post(
+      await api.post(
         `${import.meta.env.VITE_API_URL}/api/projects`,
         formData,
         {

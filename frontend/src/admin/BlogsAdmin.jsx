@@ -22,7 +22,7 @@ export default function BlogsAdmin() {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.delete(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`, {
+      await api.delete(`${import.meta.env.VITE_API_URL}/api/blogs/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -42,7 +42,7 @@ export default function BlogsAdmin() {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.put(
+      await api.put(
         `${import.meta.env.VITE_API_URL}/api/blogs/${editingBlog._id}`,
         editingBlog,
         {

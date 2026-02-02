@@ -17,7 +17,7 @@ export default function ProjectsAdmin() {
   const handleDelete = async (id) => {
     const token = localStorage.getItem("token");
 
-    await axios.delete(`${import.meta.env.VITE_API_URL}/api/projects/${id}`, {
+    await api.delete(`${import.meta.env.VITE_API_URL}/api/projects/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

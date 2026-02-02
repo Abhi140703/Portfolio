@@ -18,7 +18,7 @@ export default function MessagesAdmin() {
   const deleteMessage = async (id) => {
     if (!window.confirm("Delete this message?")) return;
 
-    await axios.delete(`${import.meta.env.VITE_API_URL}/api/messages/${id}`, {
+    await api.delete(`${import.meta.env.VITE_API_URL}/api/messages/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
