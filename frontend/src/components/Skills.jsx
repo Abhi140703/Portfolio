@@ -20,7 +20,7 @@ export default function Skills() {
     >
       <div className="max-w-6xl mx-auto px-6 text-center">
         <h2
-          className="text-4xl font-bold text-gray lg:text-white mb-12"
+          className="text-4xl font-bold text-gray-700 lg:text-white mb-12"
           style={{ WebkitTextStroke: "2px black" }}
         >
           My <span className="text-[#ffbb02]">Skills</span>

@@ -10,7 +10,7 @@ export default function Navbar() {
         {/* Logo / Name */}
         <Link
           to="/"
-          className="text-2xl text-gray lg:text-white font-bold tracking-wide"
+          className="text-2xl text-gray-700 lg:text-white font-bold tracking-wide"
           style={{ WebkitTextStroke: "1px black" }}
         >
           Abhishek DungDung
@@ -22,32 +22,32 @@ export default function Navbar() {
           style={{ WebkitTextStroke: "1px black" }}
         >
           <li>
-            <Link to="/about" className="hover:text-white">
+            <Link to="/about" className="lg:hover:text-white">
               About Me
             </Link>
           </li>
 
           <li>
-            <a href="#skills" className="hover:text-white">
+            <a href="#skills" className="lg:hover:text-white">
               Skills
             </a>
           </li>
 
           <li>
-            <a href="#projects" className="hover:text-white">
+            <a href="#projects" className="lg:hover:text-white">
               Projects
             </a>
           </li>
 
           {/* FIXED HERE */}
           <li>
-            <a href="#blogs" className="hover:text-white">
+            <a href="#blogs" className="lg:hover:text-white">
               Blogs
             </a>
           </li>
 
           <li>
-            <a href="#contact" className="hover:text-white">
+            <a href="#contact" className="lg:hover:text-white">
               Contact
             </a>
           </li>
