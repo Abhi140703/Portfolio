@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../api/api";
 import { Link } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
+import SafeImage from "../components/SafeImage";
 
 export default function ProjectSection() {
   const [projects, setProjects] = useState([]);
@@ -50,10 +51,10 @@ export default function ProjectSection() {
           >
             {/* IMAGE */}
             {p.image ? (
-              <img
-                src={`${import.meta.env.VITE_API_URL}/uploads/${p.image}`}
-                className="w-full h-48 object-cover"
+              <SafeImage
+                src={p.image}
                 alt={p.title}
+                className="w-full h-48 object-cover"
               />
             ) : (
               <div className="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-500">

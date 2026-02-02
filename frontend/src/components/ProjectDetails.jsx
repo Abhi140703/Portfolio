@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import api from "../api/api";
+import SafeImage from "../components/SafeImage";
 
 export default function ProjectDetails() {
   const { id } = useParams();
@@ -36,10 +37,10 @@ export default function ProjectDetails() {
       </Link>
 
       {project.image && (
-        <img
+        <SafeImage
           src={project.image}
           alt={project.title}
-          className="w-full h-96 object-cover rounded-xl mb-6 border-2 border-black"
+          className="w-full h-48 object-cover"
         />
       )}
 

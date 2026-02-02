@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../api/api";
 import { Link } from "react-router-dom";
+import SafeImage from "../components/SafeImage";
 
 export default function ProjectList() {
   const [projects, setProjects] = useState([]);
@@ -34,8 +35,8 @@ export default function ProjectList() {
             className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition"
           >
             {project.image && (
-              <img
-                src={`${import.meta.env.VITE_API_URL}/uploads/${project.image}`}
+              <SafeImage
+                src={project.image}
                 alt={project.title}
                 className="w-full h-48 object-cover"
               />

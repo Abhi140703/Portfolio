@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../api/api";
 import { Link } from "react-router-dom";
+import SafeImage from "../components/SafeImage";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
@@ -24,7 +25,7 @@ export default function Projects() {
             className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition"
           >
             {project.image && (
-              <img
+              <SafeImage
                 src={project.image}
                 alt={project.title}
                 className="w-full h-48 object-cover"
