@@ -13,7 +13,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post(
+      const res = await api.post(
         `${import.meta.env.VITE_API_URL}/api/auth/login`,
         form,
       );
