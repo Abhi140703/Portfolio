@@ -6,14 +6,14 @@ const multer = require("multer");
 
 console.log("✅ projectRoutes file loaded");
 
-const storage = multer.diskStorage({
-  destination: "uploads/",
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + "-" + file.originalname);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: "uploads/",
+//   filename: (req, file, cb) => {
+//     cb(null, Date.now() + "-" + file.originalname);
+//   },
+// });
 
-const upload = multer({ storage });
+// const upload = multer({ storage });
 
 // CREATE PROJECT (ADMIN)
 router.post("/", auth, upload.single("image"), async (req, res) => {

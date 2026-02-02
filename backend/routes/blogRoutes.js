@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Blog = require("../models/Blog");
 const auth = require("../middleware/auth");
-const upload = require("../middleware/upload"); // ✅ Cloudinary multer
+const upload = require("../middleware/upload"); 
 
 /* ---------------- CREATE BLOG (Admin) ---------------- */
 router.post("/", auth, upload.single("image"), async (req, res) => {
