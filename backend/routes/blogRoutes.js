@@ -14,7 +14,7 @@ router.post("/", auth, upload.single("image"), async (req, res) => {
       content: req.body.content,
       category: req.body.category,
       slug: slug,
-      image: req.file ? req.file.path : null, // ✅ CLOUDINARY URL
+      image: req.file ? req.file.path : null, 
     });
 
     await blog.save();
@@ -57,7 +57,7 @@ router.put("/:id", auth, upload.single("image"), async (req, res) => {
     category: req.body.category,
   };
 
-  if (req.file) updatedData.image = req.file.path; // ✅ CLOUDINARY URL
+  if (req.file) updatedData.image = req.file.path;
 
   await Blog.findByIdAndUpdate(req.params.id, updatedData);
   res.json({ message: "Blog updated" });
