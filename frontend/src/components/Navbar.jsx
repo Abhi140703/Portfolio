@@ -10,7 +10,7 @@ export default function Navbar() {
         {/* Logo / Name */}
         <Link
           to="/"
-          className="text-2xl text-white lg:text-white font-bold tracking-wide"
+          className="text-2xl text-gray lg:text-white font-bold tracking-wide"
           style={{ WebkitTextStroke: "1px black" }}
         >
           Abhishek DungDung
