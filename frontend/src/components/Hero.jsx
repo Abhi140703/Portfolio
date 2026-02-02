@@ -27,7 +27,7 @@ export default function Hero() {
           </p>
 
           <h1
-            className="text-4xl sm:text-5xl font-bold leading-tight"
+            className="text-4xl sm:text-5xl text-black font-bold lg:text-white leading-tight"
             style={{ WebkitTextStroke: "2px black" }}
           >
             Hello, my name <br /> is Abhishek DungDung
