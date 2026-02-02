@@ -3,23 +3,42 @@ const router = express.Router();
 const Blog = require("../models/Blog");
 const auth = require("../middleware/auth");
 const upload = require("../middleware/upload"); 
+const cloudinary = require("../config/cloudinary");
 
 /* ---------------- CREATE BLOG (Admin) ---------------- */
 router.post("/", auth, upload.single("image"), async (req, res) => {
   try {
+    let imageUrl = null;
+
+    // upload image to cloudinary
+    if (req.file) {
+      const result = await new Promise((resolve, reject) => {
+        cloudinary.uploader.upload_stream(
+          { folder: "portfolio" },
+          (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          }
+        ).end(req.file.buffer);
+      });
+
+      imageUrl = result.secure_url;
+    }
+
     const slug = req.body.title.toLowerCase().replace(/ /g, "-");
 
     const blog = new Blog({
       title: req.body.title,
       content: req.body.content,
       category: req.body.category,
-      slug: slug,
-      image: req.file ? req.file.path : null, 
+      slug,
+      image: imageUrl,
     });
 
     await blog.save();
     res.json({ message: "Blog created", blog });
   } catch (error) {
+    console.error("BLOG CREATE ERROR:", error);
     res.status(500).json({ error: error.message });
   }
 });
