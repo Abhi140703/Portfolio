@@ -14,10 +14,7 @@ export default function BlogPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-20">
-      <img
-        src={`${import.meta.env.VITE_API_URL}/uploads/${blog.image}`}
-        className="w-full rounded-xl mb-6"
-      />
+      <img src={blog.image} className="w-full rounded-xl mb-6" />
 
       <p className="text-[#ffbb02]">{blog.category}</p>
 

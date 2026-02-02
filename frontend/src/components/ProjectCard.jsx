@@ -29,11 +29,7 @@ export default function ProjectCard({
 
       {/* IMAGE */}
       <div className="md:w-1/2 h-64 md:h-auto">
-        <img
-          src={`${import.meta.env.VITE_API_URL}/uploads/${image}`}
-          alt={title}
-          className="w-full h-full object-cover"
-        />
+        <img src={image} alt={title} className="w-full h-full object-cover" />
       </div>
     </div>
   );

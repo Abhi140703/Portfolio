@@ -10,7 +10,6 @@ router.post("/", auth, upload.single("image"), async (req, res) => {
   try {
     let imageUrl = null;
 
-    // upload image to cloudinary
     if (req.file) {
       const result = await new Promise((resolve, reject) => {
         cloudinary.uploader.upload_stream(

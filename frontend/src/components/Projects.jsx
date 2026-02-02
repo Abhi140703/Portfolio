@@ -25,7 +25,7 @@ export default function Projects() {
           >
             {project.image && (
               <img
-                src={`${import.meta.env.VITE_API_URL}/${project.image}`}
+                src={project.image}
                 alt={project.title}
                 className="w-full h-48 object-cover"
               />

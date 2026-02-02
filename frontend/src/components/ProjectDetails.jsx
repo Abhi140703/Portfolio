@@ -37,7 +37,7 @@ export default function ProjectDetails() {
 
       {project.image && (
         <img
-          src={`${import.meta.env.VITE_API_URL}/uploads/${project.image}`}
+          src={project.image}
           alt={project.title}
           className="w-full h-96 object-cover rounded-xl mb-6 border-2 border-black"
         />

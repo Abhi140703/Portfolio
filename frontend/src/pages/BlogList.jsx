@@ -22,10 +22,7 @@ export default function BlogList() {
             key={blog._id}
             className="bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition"
           >
-            <img
-              src={`${import.meta.env.VITE_API_URL}/uploads/${blog.image}`}
-              className="w-full h-48 object-cover"
-            />
+            <img src={blog.image} className="w-full h-48 object-cover" />
 
             <div className="p-4">
               <p className="text-[#ffbb02] text-sm">{blog.category}</p>
