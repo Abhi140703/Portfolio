@@ -1,9 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const path = require("path");
 require("dotenv").config();
 
+const auth = require("./middleware/authMiddleware");
 
 const app = express();
 
@@ -11,25 +11,23 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// // serve uploaded images
-// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-
-// routes
-app.use("/api/auth", require("./routes/authRoutes"));
-app.use("/api/projects", require("./routes/projectRoutes"));
-app.use("/api/blogs", require("./routes/blogRoutes"));
-app.use("/api/messages", require("./routes/messageRoutes"));
-
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
+
+app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/projects", auth, require("./routes/projectRoutes"));
+app.use("/api/blogs", auth, require("./routes/blogRoutes"));
+app.use("/api/messages", auth, require("./routes/messageRoutes"));
+
+const PORT = process.env.PORT || 10000;
 
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB connected");
-    app.listen(process.env.PORT, () =>
-      console.log("Server running on port", process.env.PORT)
+    app.listen(PORT, () =>
+      console.log("Server running on port", PORT)
     );
   })
   .catch((err) => console.error(err));
