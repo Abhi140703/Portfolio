@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
+const auth = require("./middleware/authMiddleware");
+
 const app = express();
 
 app.use(cors());
@@ -13,13 +15,10 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-// 🔓 PUBLIC ROUTES
-app.use("/api/projects", require("./routes/projectRoutes"));
-app.use("/api/blogs", require("./routes/blogRoutes"));
-
-// 🔐 AUTH ROUTES
 app.use("/api/auth", require("./routes/authRoutes"));
-app.use("/api/messages", require("./routes/messageRoutes")); // protect inside route if needed
+app.use("/api/projects", auth, require("./routes/projectRoutes"));
+app.use("/api/blogs", auth, require("./routes/blogRoutes"));
+app.use("/api/messages", auth, require("./routes/messageRoutes"));
 
 const PORT = process.env.PORT || 10000;
 
