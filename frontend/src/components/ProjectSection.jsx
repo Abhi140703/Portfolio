@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../api/api";
 import { Link } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
+import ProjectsCarousel from "./ProjectsCarousel";
 import SafeImage from "../components/SafeImage";
 
 export default function ProjectSection() {
@@ -41,15 +42,8 @@ export default function ProjectSection() {
       >
         My Projects
       </h1>
-
-      {/* PROJECT GRID */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-       {projects.map((p) => (
-  <ProjectCard key={p._id} project={p} />
-))}
-
-      </div>
-
+          {/* PROJECT CAROUSEL */}
+      <ProjectsCarousel projects={projects} />
       {/* VIEW ALL BUTTON */}
       <div className="text-center mt-10">
         <Link
