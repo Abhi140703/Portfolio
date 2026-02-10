@@ -9,10 +9,15 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://mernpolio.netlify.app",
-    credentials: true,
+    origin: [
+      "https://mernpolio.netlify.app",
+      "http://localhost:5173"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
