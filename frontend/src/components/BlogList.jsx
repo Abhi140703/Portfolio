@@ -1,79 +1,75 @@
 import { useEffect, useState } from "react";
-import { motion as Motion } from "framer-motion";
+import api from "../api/api";
 import { Link } from "react-router-dom";
 
-export default function BlogStack({ blogs }) {
-  const [activeIndex, setActiveIndex] = useState(0);
+export default function BlogList() {
+  const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    if (blogs.length <= 1) return;
+    fetchBlogs();
+  }, []);
 
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % blogs.length);
-    }, 3500);
-
-    return () => clearInterval(interval);
-  }, [blogs.length]);
+  const fetchBlogs = async () => {
+    const res = await api.get("/api/blogs");
+    setBlogs(res.data);
+  };
 
   return (
-    <div className="relative w-full h-[440px] flex items-center justify-center">
-      {blogs.map((blog, index) => {
-        const position = (index - activeIndex + blogs.length) % blogs.length;
+    <div className="    [-webkit-text-stroke:1px_black] max-w-6xl mx-auto px-6 py-20 pt-10">
+      <Link
+        to="/"
+        className="inline-block mb-4 text-[#ffbb02] font-bold hover:underline text-xl "
+      >
+        ← Back to Home
+      </Link>
+      <h1
+        className="text-4xl font-bold text-[#ffbb02] mb-10 text-center 
+    [-webkit-text-stroke:2px_black]"
+      >
+        All Blogs
+      </h1>
 
-        // show only top 3 stacked cards
-        if (position > 2) return null;
-
-        return (
-          <Motion.div
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {blogs.map((blog) => (
+          <div
             key={blog._id}
-            className="absolute w-[340px]"
-            animate={{
-              y: position * 16,
-              scale: 1 - position * 0.06,
-              opacity: position === 0 ? 1 : 0.7,
-              zIndex: 10 - position,
-            }}
-            transition={{
-              type: "spring",
-              stiffness: 120,
-              damping: 20,
-            }}
+            className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition"
           >
-            {/* BLOG CARD (your existing UI) */}
-            <div className="bg-white shadow-lg rounded-xl overflow-hidden border-2 border-black">
-              {blog.image && (
-                <img
-                  src={blog.image}
-                  alt={blog.title}
-                  className="w-full h-48 object-cover"
-                />
-              )}
+            {blog.image && (
+              <img
+                src={blog.image}
+                alt={blog.title}
+                className="w-full h-48 object-cover"
+              />
+            )}
 
-              <div className="p-5">
-                <h2 className="text-2xl font-semibold">
-                  {blog.title}
-                </h2>
+            <div className="p-5">
+              <h2 className="text-2xl font-semibold">
+                <span className="text-white"></span>
+                {blog.title}
+              </h2>
 
-                <p className="text-sm text-[#ffbb02] font-medium mt-1">
-                  {blog.category}
-                </p>
+              <p className="text-sm text-[#ffbb02] font-medium mt-1">
+                <span className="[-webkit-text-stroke:1px_black] text-white"></span>
+                {blog.category}
+              </p>
 
-                <p className="text-gray-600 mt-3 line-clamp-3">
-                  {blog.content}
-                </p>
+              <p className="text-gray-600 mt-3 line-clamp-3">
+                <span className="[-webkit-text-stroke:1px_black] text-white"></span>
+                {blog.content}
+              </p>
 
-                <Link
-                  to={`/blogs/${blog.slug}`}
-                  className="inline-block mt-4 bg-[#ffbb02] text-white px-4 py-2 rounded-lg 
-                  hover:bg-black hover:text-[#ffbb02] transition border-2 border-black"
-                >
-                  Read More →
-                </Link>
-              </div>
+              <Link
+                to={`/blogs/${blog.slug}`}
+                className="inline-block mt-4 bg-[#ffbb02] text-white px-4 py-2 rounded-lg hover:bg-black hover:text-[#ffbb02] transition border-2 border-black 
+    hover:[-webkit-text-stroke:0px_transparent]"
+              >
+                Read More →
+              </Link>
             </div>
-          </Motion.div>
-        );
-      })}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
