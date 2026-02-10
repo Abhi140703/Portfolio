@@ -44,46 +44,10 @@ export default function ProjectSection() {
 
       {/* PROJECT GRID */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((p) => (
-          <div
-            key={p._id}
-            className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition"
-          >
-            {/* IMAGE */}
-            {p.image ? (
-              <SafeImage
-                src={p.image}
-                alt={p.title}
-                className="w-full h-48 object-cover"
-              />
-            ) : (
-              <div className="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-500">
-                No Image
-              </div>
-            )}
+       {projects.map((p) => (
+  <ProjectCard key={p._id} project={p} />
+))}
 
-            {/* CONTENT */}
-            <div className="p-5">
-              <h2 className="text-xl font-semibold">{p.title}</h2>
-
-              <p className="text-gray-600 mt-2 line-clamp-3">{p.description}</p>
-
-              <Link
-                to={`/projects/${p._id}`}
-                className="
-   text-xl inline-block mt-4 px-5 py-2 rounded-full font-bold
-    bg-[#ffbb02] text-white border-2 border-black
-    [-webkit-text-stroke:1px_black]
-    hover:[-webkit-text-stroke:0px_transparent]
-    hover:bg-black hover:text-[#ffbb02]
-    transition
-  "
-              >
-                View Details →
-              </Link>
-            </div>
-          </div>
-        ))}
       </div>
 
       {/* VIEW ALL BUTTON */}
