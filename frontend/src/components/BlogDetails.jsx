@@ -17,7 +17,7 @@ export default function BlogDetails() {
   if (!blog) return <p className="text-center mt-20">Loading...</p>;
 
   return (
-    <div className="border-2 border-black max-w-4xl bg-[#ffbb02] mx-auto mt-20 mb-20 px-6 py-20">
+      <div className="max-w-4xl mx-auto px-6 py-20">
       <Link
         to="/"
         className="
@@ -27,8 +27,7 @@ export default function BlogDetails() {
     z-50
     text-[#ffbb02]
     font-semibold
-    hover:underline text-2xl
-    [-webkit-text-stroke:1px_black]
+    hover:underline
   "
       >
         ← Back to Home
@@ -44,8 +43,7 @@ export default function BlogDetails() {
 
       <h1 className="text-4xl text-white mb-4">
         <span
-          className="text-white 
-    [-webkit-text-stroke:1px_black]"
+          className="text-white "
         >
           Title:-{" "}
         </span>
@@ -55,8 +53,7 @@ export default function BlogDetails() {
       <p className="text-sm text-white mb-6">
         {" "}
         <span
-          className="text-white text-xl font-bold
-    [-webkit-text-stroke:1px_black]"
+          className="text-white text-xl font-bold"
         >
           Category:-{" "}
         </span>
@@ -65,7 +62,7 @@ export default function BlogDetails() {
 
       <div className="text-white leading-8 text-2xl whitespace-pre-line">
         {" "}
-        <span className="text-white  font-bold [-webkit-text-stroke:1px_black]">
+        <span className="text-white  font-bold ">
           Content:-{" "}
         </span>
         {blog.content}

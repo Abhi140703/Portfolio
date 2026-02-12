@@ -35,8 +35,7 @@ export default function Contact() {
         className="bg-white w-full max-w-lg p-8 rounded-2xl shadow-xl space-y-4"
       >
         <h2
-          className="text-3xl font-bold text-center text-[#ffbb02] 
-    [-webkit-text-stroke:2px_black]"
+          className="text-3xl font-bold text-center text-[#ffbb02]"
         >
           Contact Me
         </h2>
@@ -71,9 +70,8 @@ export default function Contact() {
         />
 
         <button
-          className="w-full bg-[#ffbb02] text-white py-3 rounded-lg hover:bg-[#ffbb02] text-lg border-2 border-black hover:bg-black hover:text-[#ffbb02] 
-          [-webkit-text-stroke:1px_black]
-    hover:[-webkit-text-stroke:0px_transparent]"
+          className="w-full bg-[#ffbb02] text-white py-3 rounded-lg text-lg border-2 border-black hover:bg-black hover:text-[#ffbb02] 
+       "
         >
           Send Message
         </button>

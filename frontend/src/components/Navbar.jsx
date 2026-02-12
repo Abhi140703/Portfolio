@@ -10,44 +10,44 @@ export default function Navbar() {
         {/* Logo / Name */}
         <Link
           to="/"
-          className="text-2xl text-gray-700 lg:text-white font-bold tracking-wide"
-          style={{ WebkitTextStroke: "1px black" }}
+          className="lg:text-3xl text-xl text-gray-700 font-bold tracking-wide"
+         
         >
           Abhishek DungDung
         </Link>
 
         {/* Desktop Menu */}
         <ul
-          className="hidden md:flex gap-10 text-xl text-white font-medium"
-          style={{ WebkitTextStroke: "1px black" }}
+          className="hidden md:flex gap-10 text-xl text-black font-medium"
+     
         >
           <li>
-            <Link to="/about" className="lg:hover:text-white">
+            <Link to="/about" className="lg:hover:text-red-500">
               About Me
             </Link>
           </li>
 
           <li>
-            <a href="#skills" className="lg:hover:text-white">
+            <a href="#skills" className="lg:hover:text-red-500">
               Skills
             </a>
           </li>
 
           <li>
-            <a href="#projects" className="lg:hover:text-white">
+            <a href="#projects" className="lg:hover:text-red-500">
               Projects
             </a>
           </li>
 
           {/* FIXED HERE */}
           <li>
-            <a href="#blogs" className="lg:hover:text-white">
+            <a href="#blogs" className="lg:hover:text-red-500">
               Blogs
             </a>
           </li>
 
           <li>
-            <a href="#contact" className="lg:hover:text-white">
+            <a href="#contact" className="lg:hover:text-red-500">
               Contact
             </a>
           </li>
@@ -62,11 +62,11 @@ export default function Navbar() {
       {/* Mobile Dropdown */}
       {open && (
         <ul
-          className="md:hidden bg-white shadow text-xl text-white  font-medium p-6 space-y-6 text-center"
-          style={{ WebkitTextStroke: "1px black" }}
+          className="md:hidden bg-white shadow text-xl text-black  font-medium p-6 space-y-6 text-center"
+          
         >
           <li>
-            <Link to="/about" className="hover:text-white">
+            <Link to="/about" className="hover:text-red-600">
               About Me
             </Link>
           </li>

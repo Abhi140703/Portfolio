@@ -19,22 +19,21 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
         {/* LEFT CONTENT */}
         <div
-          className="text-center lg:text-left text-white"
-          style={{ WebkitTextStroke: "1px black" }}
+          className="text-center lg:text-left text-gray-800 lg:py-10"
         >
-          <p className="text-black text-xl lg:text-[#ffbb02] font-semibold tracking-wide mb-3">
+          <p className="text-black text-l lg:text-2xl lg:text-[#ffbb02] font-semibold tracking-wide mb-3">
             MERN STACK DEVELOPER
           </p>
 
           <h1
-            className="text-4xl sm:text-5xl text-gray-700 font-bold lg:text-white leading-tight"
-            style={{ WebkitTextStroke: "2px black" }}
+            className="text-4xl sm:text-5xl text-gray-700 font-bold lg:text-gray-800 leading-tight"
+
           >
             Hello, my name <br /> is Abhishek DungDung
           </h1>
 
           {/* DESCRIPTION (DESKTOP ONLY HERE) */}
-          <p className="text-gray-700 lg:text-gray-600 mt-6 max-lg:hidden">
+          <p className="text-gray-700 font-semibold text-xl lg:text-gray-600 mt-6 max-lg:hidden">
             I build modern full-stack web applications using MongoDB, Express,
             React, and Node.js.
           </p>
@@ -77,7 +76,7 @@ export default function Hero() {
         </div>
 
         {/* MOBILE DESCRIPTION */}
-        <p className="text-gray-700 text-center lg:hidden -mt-6">
+        <p className="text-gray-700 text-center text-l lg:hidden -mt-6">
           I build modern full-stack web applications using MongoDB, Express,
           React, and Node.js.
         </p>
@@ -98,7 +97,7 @@ export default function Hero() {
               px-6 py-3 rounded-xl font-bold text-center
               bg-white text-black
               lg:bg-[#ffbb02] lg:text-white
-              hover:-translate-y-1 transition border-2 border-black
+              hover:-translate-y-1 transition 
             "
           >
             Projects
@@ -111,7 +110,7 @@ export default function Hero() {
             className="
               px-6 py-3 rounded-xl font-semibold text-center
               bg-[#0A66C2] text-white
-              hover:-translate-y-1 transition border-2 border-black
+              hover:-translate-y-1 transition  
             "
           >
             LinkedIn
@@ -124,7 +123,7 @@ export default function Hero() {
             className="
               px-6 py-3 rounded-xl font-semibold text-center
               bg-[#24292F] text-white
-              hover:-translate-y-1 transition border-2 border-[#ffbb02]
+              hover:-translate-y-1 transition  
             "
           >
             Github
@@ -137,7 +136,7 @@ export default function Hero() {
               bg-white text-black
               lg:bg-[#EF4444]
               lg:text-white
-              hover:-translate-y-1 transition border-2 border-black
+              hover:-translate-y-1 transition  
             "
           >
             Download CV

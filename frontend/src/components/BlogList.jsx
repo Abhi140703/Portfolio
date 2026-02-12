@@ -15,7 +15,7 @@ export default function BlogList() {
   };
 
   return (
-    <div className="    [-webkit-text-stroke:1px_black] max-w-6xl mx-auto px-6 py-20 pt-10">
+    <div className="    max-w-6xl mx-auto px-6 py-20 pt-10">
       <Link
         to="/"
         className="inline-block mb-4 text-[#ffbb02] font-bold hover:underline text-xl "
@@ -23,8 +23,7 @@ export default function BlogList() {
         ← Back to Home
       </Link>
       <h1
-        className="text-4xl font-bold text-[#ffbb02] mb-10 text-center 
-    [-webkit-text-stroke:2px_black]"
+        className="text-4xl font-bold text-[#ffbb02] mb-10 text-center"
       >
         All Blogs
       </h1>
@@ -50,12 +49,12 @@ export default function BlogList() {
               </h2>
 
               <p className="text-sm text-[#ffbb02] font-medium mt-1">
-                <span className="[-webkit-text-stroke:1px_black] text-white"></span>
+                <span className=" text-white"></span>
                 {blog.category}
               </p>
 
               <p className="text-gray-600 mt-3 line-clamp-3">
-                <span className="[-webkit-text-stroke:1px_black] text-white"></span>
+                <span className=" text-white"></span>
                 {blog.content}
               </p>
 

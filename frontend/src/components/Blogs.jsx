@@ -17,22 +17,19 @@ export default function Blogs() {
   return (
     <section
       id="blogs"
-      className="py-24 bg-gray-50 
-    [-webkit-text-stroke:1px_black]"
+      className="py-24 bg-gray-50 "
     >
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex justify-between items-center mb-10">
           <h2
-            className="
-    [-webkit-text-stroke:2px_black] text-4xl font-bold text-[#ffbb02]"
+            className=" text-4xl font-bold text-[#ffbb02]"
           >
             Latest Blogs
           </h2>
 
           <Link
             to="/blogs"
-            className="text-[#ffbb02] text-2xl font-bold hover:underline 
-    [-webkit-text-stroke:2px_black]"
+            className="text-[#ffbb02] text-2xl font-bold hover:underline "
           >
             View All →
           </Link>
@@ -63,7 +60,7 @@ export default function Blogs() {
 
                 <Link
                   to={`/blogs/${blog.slug}`}
-                  className="inline-block mt-4 bg-[#ffbb02] text-white px-4 py-2 rounded-lg hover:bg-black transition  hover:text-[#ffbb02] border-2 border-black   [-webkit-text-stroke:1px_black]
+                  className="inline-block mt-4 bg-[#ffbb02] text-white px-4 py-2 rounded-lg hover:bg-black transition  hover:text-[#ffbb02] border-2 border-black 
     hover:[-webkit-text-stroke:0px_transparent]"
                 >
                   Read More →
