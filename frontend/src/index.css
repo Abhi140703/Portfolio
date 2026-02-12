@@ -4,3 +4,80 @@ body {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ===== ARC REACTOR (YELLOW + RED THEME) ===== */
+
+.arc-reactor-teal {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #fff3b0 0%,
+    #ffbb02 40%,
+    #2a1a00 70%,
+    #000 80%
+  );
+  box-shadow:
+    0 0 35px rgba(255, 187, 2, 0.6),
+    inset 0 0 22px rgba(255, 80, 0, 0.35);
+}
+
+/* OUTER RED RING */
+.outer-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 60, 60, 0.7);
+  box-shadow:
+    inset 0 0 15px rgba(255, 60, 60, 0.6),
+    0 0 20px rgba(255, 60, 60, 0.6);
+}
+
+/* YELLOW SEGMENTED RING */
+.segment-ring {
+  position: absolute;
+  inset: 18px;
+  border-radius: 50%;
+  border: 6px dashed rgba(255, 200, 0, 0.95);
+  animation: spin 6s linear infinite;
+  box-shadow: 0 0 22px rgba(255, 200, 0, 0.9);
+}
+
+/* HOT YELLOW CORE */
+.inner-core {
+  position: absolute;
+  inset: 48px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at top left,
+    #ffffff,
+    #ffeb3b 55%,
+    #ff9800 75%,
+    #ff5722
+  );
+  box-shadow:
+    0 0 40px rgba(255, 200, 0, 1),
+    inset -5px -5px 12px rgba(120, 40, 0, 0.6),
+    inset 5px 5px 12px rgba(255, 255, 255, 0.35);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ANIMATIONS */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 28px rgba(255, 200, 0, 0.9);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 55px rgba(255, 120, 0, 1);
+  }
+}
+

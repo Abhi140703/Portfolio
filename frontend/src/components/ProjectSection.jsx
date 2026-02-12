@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ArcReactorLoader from "./ArcReactorLoader";
 import api from "../api/api";
 import { Link } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
@@ -23,16 +24,13 @@ export default function ProjectSection() {
     setLoading(false);
   };
 
-  if (loading) {
-    return (
-      <p
-        className="text-center text-gray-600 mt-10"
-        style={{ WebkitTextStroke: "1px black" }}
-      >
-        Loading Projects...
-      </p>
-    );
-  }
+ if (loading) {
+  return (
+    <div id="projects" className="max-w-6xl mx-auto px-6 py-20">
+      <ArcReactorLoader />
+    </div>
+  );
+}
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-20" id="projects">
