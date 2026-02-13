@@ -4,7 +4,7 @@ export default function BlogCardDesktop({ blog }) {
   return (
     <div className="flex w-full max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-black">
       {/* LEFT: IMAGE */}
-      <div className="w-2/3">
+      <div className="w-2/3 h-[360px] lg:h-[380px] overflow-hidden ">
         <img
           src={blog.image}
           alt={blog.title}
