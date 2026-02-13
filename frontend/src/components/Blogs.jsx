@@ -44,15 +44,17 @@ export default function Blogs() {
   </div>
 ) : (
   <>
-    {/* DESKTOP ONLY */}
-    <div className="hidden md:flex justify-center">
-      {blogs[0] && <BlogCardDesktop blog={blogs[0]} />}
-    </div>
+   {/* DESKTOP */}
+<div className="hidden md:flex flex-col gap-12 items-center">
+  {blogs[0] && <BlogCardDesktop blog={blogs[0]} />}
+  <BlogStack blogs={blogs} />
+</div>
 
-    {/* MOBILE ONLY */}
-    <div className="md:hidden">
-      <BlogStack blogs={blogs} />
-    </div>
+{/* MOBILE */}
+<div className="md:hidden">
+  <BlogStack blogs={blogs} />
+</div>
+
   </>
 )}
 

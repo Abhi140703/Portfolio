@@ -24,7 +24,7 @@ export default function BlogPage() {
         {new Date(blog.createdAt).toDateString()}
       </p>
 
-      <div className="prose max-w-none">{blog.content}</div>
+      <div className="prose max-w-none"  dangerouslySetInnerHTML={{ __html: blog.content }}>{blog.content}</div>
     </div>
   );
 }
