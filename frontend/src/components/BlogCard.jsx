@@ -21,8 +21,9 @@ export default function BlogCard({ blog }) {
         </p>
 
         <p className="mt-3 text-gray-600 line-clamp-3">
-          {blog.content}
-        </p>
+  {stripHtml(blog.content)}
+</p>
+
 
         <Link
           to={`/blogs/${blog.slug}`}
@@ -33,5 +34,9 @@ export default function BlogCard({ blog }) {
         </Link>
       </div>
     </div>
+    
   );
+}
+function stripHtml(html) {
+  return html.replace(/<[^>]*>?/gm, "");
 }

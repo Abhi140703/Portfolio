@@ -1,66 +1,44 @@
-import { useEffect, useState } from "react";
-import { motion as Motion } from "framer-motion";
-import BlogCardDesktop from "./BlogCardDesktop";
+import { Link } from "react-router-dom";
 
-export default function BlogStackDesktop({ blogs }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isInteracting, setIsInteracting] = useState(false);
-
-  useEffect(() => {
-    if (!blogs || blogs.length <= 1 || isInteracting) return;
-
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % blogs.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [blogs, isInteracting]);
-
-  if (!blogs || blogs.length === 0) return null;
-
+export default function BlogCardDesktop({ blog }) {
   return (
-    <div
-      className="relative w-full h-[420px] flex items-center justify-center"
-      onWheel={(e) => {
-        setIsInteracting(true);
+    <div className="flex max-w-6xl mx-auto bg-white rounded-2xl shadow-sm overflow-hidden">
+      {/* IMAGE */}
+      <div className="w-3/5 h-[280px] overflow-hidden rounded-1-2xl">
+        <img
+          src={blog.image}
+          alt={blog.title}
+          className="w-full h-full object-cover"
+        />
+      </div>
 
-        if (e.deltaY > 20) {
-          setActiveIndex((prev) => (prev + 1) % blogs.length);
-        } else if (e.deltaY < -20) {
-          setActiveIndex((prev) =>
-            (prev - 1 + blogs.length) % blogs.length
-          );
-        }
+      {/* CONTENT */}
+      <div className="w-2/5 p-8 flex flex-col justify-between">
+        <div>
+          <p className="text-sm text-[#ffbb02] font-medium mb-2">
+            {blog.category}
+          </p>
 
-        setTimeout(() => setIsInteracting(false), 600);
-      }}
-    >
-      {blogs.map((blog, index) => {
-        const position =
-          (index - activeIndex + blogs.length) % blogs.length;
+          <h3 className="text-2xl font-semibold leading-snug mb-4">
+            {blog.title}
+          </h3>
 
-        if (position > 2) return null;
+          <p className="text-gray-700 leading-relaxed line-clamp-4">
+  {stripHtml(blog.content)}
+</p>
 
-        return (
-          <Motion.div
-            key={blog._id || index}
-            className="absolute w-full max-w-5xl"
-            animate={{
-              y: position * 22,
-              scale: 1 - position * 0.04,
-              opacity: position === 0 ? 1 : 0.65,
-              zIndex: 10 - position,
-            }}
-            transition={{
-              type: "spring",
-              stiffness: 120,
-              damping: 18,
-            }}
-          >
-            <BlogCardDesktop blog={blog} />
-          </Motion.div>
-        );
-      })}
+        </div>
+
+        <Link
+          to={`/blogs/${blog.slug}`}
+          className="mt-6 text-[#ffbb02] font-semibold"
+        >
+          Read article →
+        </Link>
+      </div>
     </div>
   );
+}
+function stripHtml(html) {
+  return html.replace(/<[^>]*>?/gm, "");
 }

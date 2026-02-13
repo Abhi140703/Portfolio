@@ -21,7 +21,7 @@ import Footer from "./components/Footer";
 
 /* BLOG PAGES *//* BLOG PAGES */
 import BlogList from "./pages/BlogList";
-import BlogDetails from "./pages/BlogPage";
+import BlogPage from "./pages/BlogPage";
 
 
 /* PROJECT PAGES */
@@ -65,7 +65,7 @@ export default function App() {
 
       {/* BLOG ROUTES */}
       <Route path="/blogs" element={<BlogList />} />
-      <Route path="/blogs/:slug" element={<BlogDetails />} />
+      <Route path="/blogs/:slug" element={<BlogPage />} />
 
       {/* PROJECT ROUTES */}
       <Route path="/projects" element={<ProjectList />} />

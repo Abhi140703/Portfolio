@@ -2,56 +2,90 @@ import { useEffect, useState } from "react";
 import api from "../api/api";
 import { Link } from "react-router-dom";
 import ArcReactorLoader from "./ArcReactorLoader";
-import BlogStack from "./BlogStack";
 import BlogCardDesktop from "./BlogCardDesktop";
+import BlogStack from "./BlogStack";
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(0);
+
 
   useEffect(() => {
-    fetchLatestBlogs();
+    (async () => {
+      const res = await api.get("/api/blogs/latest");
+      setBlogs(res.data);
+      console.log("BLOGS FROM API:", blogs.map(b => b.title));
+      setLoading(false);
+    })();
   }, []);
 
-  const fetchLatestBlogs = async () => {
-    setLoading(true);
-    const res = await api.get("/api/blogs/latest");
-    setBlogs(res.data);
-    setTimeout(() => setLoading(false), 400);
-  };
-
   return (
-    <section id="blogs" className="py-24 pb-10 bg-gray-50">
+    <section id="blogs" className="pt-24 pb-12 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
-        {/* HEADER ALWAYS VISIBLE */}
-        <div className="flex justify-between items-center mb-10">
+        {/* HEADER */}
+        <div className="flex justify-between items-center mb-12">
           <h2 className="text-4xl font-bold text-[#ffbb02]">
             Latest Blogs
           </h2>
 
           <Link
             to="/blogs"
-            className="text-[#ffbb02] text-2xl font-bold hover:underline"
+            className="text-[#ffbb02] text-lg font-semibold hover:underline"
           >
-            View All →
+            View all →
           </Link>
         </div>
 
-        {/* CONTENT AREA */}
-        {loading ? (
-  <div className="flex justify-center items-center min-h-[400px]">
-    <ArcReactorLoader text="Blogs are loading..." />
+        {/* CONTENT */}
+ {loading ? (
+  <div className="flex justify-center items-center min-h-[320px]">
+    <ArcReactorLoader text="Loading blogs..." />
   </div>
 ) : (
   <>
-    {/* DESKTOP */}
-    <div className="hidden md:block">
-      <BlogStackDesktop blogs={blogs} />
-    </div>
+    {/* DESKTOP: ONLY FEATURED BLOG */}
+    {/* DESKTOP FEATURED BLOG WITH ARROWS */}
+<div className="hidden md:block relative">
+  {blogs[activeIndex] && (
+    <BlogCardDesktop blog={blogs[activeIndex]} />
+  )}
 
-    {/* MOBILE */}
+  {/* LEFT ARROW */}
+  {activeIndex > 0 && (
+   <button
+  onClick={() => setActiveIndex(activeIndex + 1)}
+  className="
+    absolute right-[-60px] top-1/2 -translate-y-1/2
+    w-12 h-12 rounded-full
+    bg-white shadow-lg
+    text-4xl font-bold text-[#ffbb02]
+    hover:scale-110 hover:shadow-xl
+    transition
+  "
+>
+  →
+</button>
+
+
+  )}
+
+  {/* RIGHT ARROW */}
+  {activeIndex < blogs.length - 1 && (
+    <button
+      onClick={() => setActiveIndex(activeIndex + 1)}
+      className="absolute right-[-50px] top-1/2 -translate-y-1/2
+                 text-3xl text-[#ffbb02] hover:scale-110 transition"
+    >
+      →
+    </button>
+  )}
+</div>
+
+
+    {/* MOBILE: STACK */}
     <div className="md:hidden">
-      <BlogStack blogs={blogs} />
+      <BlogStack blogs={blogs.slice(0, 3)} />
     </div>
   </>
 )}
@@ -61,3 +95,4 @@ export default function Blogs() {
     </section>
   );
 }
+

@@ -23,7 +23,7 @@ export default function BlogStack({ blogs }) {
 
   return (
     <div
-      className="relative w-full min-h-[560px] flex flex-col items-center justify-center"
+      className="relative w-full h-[380px] flex flex-col items-center justify-center"
       onWheel={(e) => {
         setIsInteracting(true);
         setHasInteracted(true);
@@ -40,7 +40,8 @@ export default function BlogStack({ blogs }) {
       }}
     >
       {/* STACK */}
-      <div className="relative w-full flex items-center justify-center m-16">
+      <div className="relative w-full h-[420px] flex flex-col items-center justify-center">
+
         {blogs.map((blog, index) => {
           const position =
             (index - activeIndex + blogs.length) % blogs.length;
@@ -51,7 +52,7 @@ export default function BlogStack({ blogs }) {
           return (
             <Motion.div
               key={blog._id || index}
-              className="absolute w-[340px]"
+              className="absolute w-[300px]"
               drag={position === 0 ? "y" : false}
               dragConstraints={{ top: -80, bottom: 80 }}
               dragElastic={0.15}
@@ -79,7 +80,7 @@ export default function BlogStack({ blogs }) {
               }}
               animate={{
                 y: position * 18,
-                scale: 1 - position * 0.06,
+                scale:  position === 0 ? 0.95 : 0.9,
                 opacity: position === 0 ? 1 : 0.6,
                 zIndex: 10 - position,
               }}
@@ -97,16 +98,17 @@ export default function BlogStack({ blogs }) {
 
    {!hasInteracted && (
   <p
-    className="
-      relative z-20 mt-6 text-center text-xs
-      text-[#ffbb02] opacity-80
-      flex items-center justify-center gap-2
-      animate-pulse
-      pointer-events-none
-    "
-  >
-    <span className="text-lg">↑</span>
-    Drag or scroll to explore blogs
+  className="
+    absolute z-20
+    top-[260px] md:top-[420px]
+    text-xs text-[#ffbb02] opacity-80
+    flex items-center justify-center gap-2
+    animate-pulse
+    pointer-events-none
+  "
+>
+   <span className="">↑</span>
+    Scroll to read more stories ↓
     <span className="text-lg">↓</span>
   </p>
 )}

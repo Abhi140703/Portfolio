@@ -4,40 +4,75 @@ import ProjectCard from "./ProjectCard";
 
 export default function ProjectsCarousel({ projects }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [isInteracting, setIsInteracting] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
 
-  // AUTO LOOP
+
+  /* AUTO ROTATE (PAUSE ON INTERACTION) */
   useEffect(() => {
-    if (paused || projects.length <= 1) return;
+    if (isInteracting || projects.length <= 1) return;
 
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % projects.length);
-    }, 3000);
+    }, 3500);
 
     return () => clearInterval(interval);
-  }, [paused, projects.length]);
+  }, [projects.length, isInteracting]);
+
+  if (!projects || projects.length === 0) return null;
 
   return (
     <div
       className="relative w-full h-[420px] flex items-center justify-center overflow-hidden"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      onWheel={(e) => {
+        setIsInteracting(true);
+        setHasInteracted(true); 
+
+        if (e.deltaY > 30) {
+          setActiveIndex((prev) => (prev + 1) % projects.length);
+        } else if (e.deltaY < -30) {
+          setActiveIndex(
+            (prev) => (prev - 1 + projects.length) % projects.length
+          );
+        }
+
+        setTimeout(() => setIsInteracting(false), 600);
+      }}
     >
       {projects.map((project, index) => {
         const offset = index - activeIndex;
 
-        // hide far cards
         if (Math.abs(offset) > 2) return null;
 
         return (
           <Motion.div
             key={project._id || index}
             className="absolute w-[300px]"
+            drag="x"
+            dragConstraints={{ left: -80, right: 80 }}
+            dragElastic={0.15}
+            onDragStart={() => {
+              setIsInteracting(true);
+            setHasInteracted(true); 
+            }}
+            onDragEnd={(e, info) => {
+              setIsInteracting(false);
+
+              if (info.offset.x < -50) {
+                setActiveIndex((prev) => (prev + 1) % projects.length);
+              }
+
+              if (info.offset.x > 50) {
+                setActiveIndex(
+                  (prev) => (prev - 1 + projects.length) % projects.length
+                );
+              }
+            }}
             animate={{
               x: offset * 340,
               scale: offset === 0 ? 1.12 : 0.9,
               opacity: offset === 0 ? 1 : 0.6,
-              zIndex: offset === 0 ? 10 : 5,
+              zIndex: 10 - Math.abs(offset),
             }}
             transition={{
               type: "spring",
@@ -49,6 +84,65 @@ export default function ProjectsCarousel({ projects }) {
           </Motion.div>
         );
       })}
+
+      {/* ARROWS (DESKTOP UX) */}
+     <button
+  onClick={() =>{
+    setHasInteracted(true); 
+    setActiveIndex((prev) =>
+      (prev - 1 + projects.length) % projects.length
+    )
+  }}
+  className="
+    hidden md:flex items-center justify-center
+    absolute left-3 top-1/2 -translate-y-1/2
+    w-12 h-12 rounded-full
+    bg-white shadow-lg
+    text-4xl font-bold text-[#ffbb02]
+    hover:scale-110 hover:shadow-xl
+    transition
+  "
+>
+  ←
+</button>
+
+
+    <button
+  onClick={() =>{
+    setHasInteracted(true); 
+    setActiveIndex((prev) => (prev + 1) % projects.length)
+  }}
+  className="
+    hidden md:flex items-center justify-center
+    absolute right-3 top-1/2 -translate-y-1/2
+    w-12 h-12 rounded-full
+    bg-white shadow-lg
+    text-4xl font-bold text-[#ffbb02]
+    hover:scale-110 hover:shadow-xl
+    transition
+  "
+>
+  →
+</button>
+
+      {/* SCROLL / SWIPE INSTRUCTION */}
+      {!hasInteracted && (
+       <p
+  className="
+    absolute bottom-15 z-20
+    text-xs text-[#ffbb02] opacity-80
+    flex items-center gap-2
+    animate-pulse
+    pointer-events-none
+  "
+>
+          <span className="text-lg">←</span>
+          Scroll or swipe to explore projects
+          <span className="text-lg">→</span>
+        </p>
+      )}
     </div>
   );
 }
+
+

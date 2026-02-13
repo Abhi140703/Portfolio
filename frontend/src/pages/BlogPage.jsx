@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import api from "../api/api";
 import { useEffect, useState } from "react";
 
@@ -7,24 +7,59 @@ export default function BlogPage() {
   const [blog, setBlog] = useState(null);
 
   useEffect(() => {
-    api.get(`/api/blogs/slug/${slug}`).then((res) => setBlog(res.data));
+    (async () => {
+      const res = await api.get(`/api/blogs/slug/${slug}`);
+      setBlog(res.data);
+    })();
   }, [slug]);
 
-  if (!blog) return <p className="text-center py-20">Loading...</p>;
+  if (!blog) {
+    return (
+      <p className="text-center py-24 text-gray-500">
+        Loading article…
+      </p>
+    );
+  }
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-20">
-      <img src={blog.image} className="w-full rounded-xl mb-6" />
+    <article className="max-w-3xl mx-auto px-6 pt-16 pb-28">
+      {/* BACK */}
+      <Link
+        to="/blogs"
+        className="inline-block mb-6 text-[#ffbb02] font-semibold hover:underline"
+      >
+        ← Back to Blogs
+      </Link>
 
-      <p className="text-[#ffbb02]">{blog.category}</p>
+      {/* CATEGORY */}
+      <p className="text-sm text-[#ffbb02] font-medium mb-2">
+        {blog.category}
+      </p>
 
-      <h1 className="text-4xl font-bold mb-4">{blog.title}</h1>
+      {/* TITLE */}
+      <h1 className="text-4xl font-bold leading-tight mb-4">
+        {blog.title}
+      </h1>
 
-      <p className="text-gray-500 mb-6">
+      {/* META */}
+      <p className="text-gray-500 mb-8">
         {new Date(blog.createdAt).toDateString()}
       </p>
 
-      <div className="prose max-w-none"  dangerouslySetInnerHTML={{ __html: blog.content }}>{blog.content}</div>
-    </div>
+      {/* IMAGE */}
+      {blog.image && (
+        <img
+          src={blog.image}
+          alt={blog.title}
+          className="w-full h-[360px] object-cover rounded-2xl mb-10"
+        />
+      )}
+
+      {/* CONTENT */}
+      <div
+        className="prose prose-lg max-w-none prose-headings:font-semibold prose-img:rounded-xl"
+        dangerouslySetInnerHTML={{ __html: blog.content }}
+      />
+    </article>
   );
 }
