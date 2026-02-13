@@ -4,39 +4,54 @@ export default function BlogCard({ blog }) {
   if (!blog) return null;
 
   return (
-    <div className="bg-white shadow-xl rounded-2xl overflow-hidden border-2 border-black">
+    <article
+      className="
+        bg-white rounded-2xl overflow-hidden
+        shadow-lg border border-black/10
+        transition-transform duration-300
+      "
+    >
+      {/* IMAGE */}
       {blog.image && (
-        <img
-          src={blog.image}
-          alt={blog.title}
-          className="w-full h-48 object-cover"
-        />
+        <div className="w-full h-[180px] overflow-hidden">
+          <img
+            src={blog.image}
+            alt={blog.title}
+            className="w-full h-full object-cover"
+          />
+        </div>
       )}
 
-      <div className="p-5">
-        <h3 className="text-2xl font-bold">{blog.title}</h3>
-
-        <p className="text-[#ffbb02] text-sm mt-1">
+      {/* CONTENT */}
+      <div className="p-5 flex flex-col gap-2">
+        <p className="text-xs font-semibold tracking-wide text-[#ffbb02]">
           {blog.category}
         </p>
 
-        <p className="mt-3 text-gray-600 line-clamp-3">
-  {stripHtml(blog.content)}
-</p>
+        <h3 className="text-lg font-bold leading-snug text-gray-800">
+          {blog.title}
+        </h3>
 
+        <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
+          {stripHtml(blog.content)}
+        </p>
 
         <Link
           to={`/blogs/${blog.slug}`}
-          className="inline-block mt-4 bg-[#ffbb02] text-white px-4 py-2 rounded-lg 
-          hover:bg-black transition hover:text-[#ffbb02] border-2 border-black"
+          className="
+            mt-3 inline-flex items-center gap-1
+            text-sm font-semibold text-[#ffbb02]
+            hover:underline
+          "
         >
-          Read More →
+          Read article →
         </Link>
       </div>
-    </div>
-    
+    </article>
   );
 }
-function stripHtml(html) {
+
+/* Utility */
+function stripHtml(html = "") {
   return html.replace(/<[^>]*>?/gm, "");
 }

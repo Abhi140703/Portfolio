@@ -6,163 +6,99 @@ export default function Navbar() {
   const [active, setActive] = useState(null);
 
   const handleScroll = (id) => {
-  setActive(id); 
+    setActive(id);
 
-  setTimeout(() => {
-    setOpen(false); 
-  }, 350);
+    setTimeout(() => setOpen(false), 300);
 
-  setTimeout(() => {
-    document.getElementById(id)?.scrollIntoView({
-      behavior: "smooth",
-    });
-  }, 400);
-};
-
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({
+        behavior: "smooth",
+      });
+    }, 350);
+  };
 
   const navClass = (id) =>
-    `cursor-pointer relative transition-all duration-300 ease-out
-   ${active === id ? "text-red-500 scale-110" : "text-black"}
-   lg:hover:text-red-500`;
+    `cursor-pointer relative transition-all duration-300
+     ${
+       active === id
+         ? "text-accent scale-110"
+         : "text-dark"
+     }
+     hover:text-accent`;
 
   return (
-    <nav className="w-full fixed top-0 left-0 bg-transparent z-20">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-10 py-6">
-        {/* Logo / Name */}
+    <nav className="w-full fixed top-0 left-0 bg-bg/90 backdrop-blur z-20">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-10 py-5">
+        {/* LOGO */}
         <Link
           to="/"
-          className="lg:text-3xl text-xl text-gray-700 font-bold tracking-wide"
+          className="text-xl lg:text-3xl font-bold tracking-wide text-dark"
         >
           Abhishek DungDung
         </Link>
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-10 text-xl text-black font-medium">
+        {/* DESKTOP MENU */}
+        <ul className="hidden md:flex gap-10 text-lg font-medium">
           <li>
-            <Link to="/about" className="lg:hover:text-red-500">
+            <Link to="/about" className="text-dark hover:text-accent">
               About Me
             </Link>
           </li>
 
-          <li
-            className={navClass("skills")}
-            onClick={() => handleScroll("skills")}
-          >
-            <span className="relative">
-              skills
-              <span
-                className={`absolute left-0 -bottom-1 h-[2px] bg-red-500 transition-all duration-300
-      ${active === "skills" ? "w-full" : "w-0"}`}
-              />
-            </span>
-          </li>
-
-          <li
-            className={navClass("projects")}
-            onClick={() => handleScroll("projects")}
-          >
-            <span className="relative">
-              Projects
-              <span
-                className={`absolute left-0 -bottom-1 h-[2px] bg-red-500 transition-all duration-300
-      ${active === "projects" ? "w-full" : "w-0"}`}
-              />
-            </span>
-          </li>
-
-          <li
-            className={navClass("blogs")}
-            onClick={() => handleScroll("blogs")}
-          >
-            <span className="relative">
-              Blogs
-              <span
-                className={`absolute left-0 -bottom-1 h-[2px] bg-red-500 transition-all duration-300
-      ${active === "blogs" ? "w-full" : "w-0"}`}
-              />
-            </span>
-          </li>
-
-          <li
-            className={navClass("contact")}
-            onClick={() => handleScroll("contact")}
-          >
-            <span className="relative">
-              Contact
-              <span
-                className={`absolute left-0 -bottom-1 h-[2px] bg-red-500 transition-all duration-300
-      ${active === "contact" ? "w-full" : "w-0"}`}
-              />
-            </span>
-          </li>
+          {["skills", "projects", "blogs", "contact"].map((item) => (
+            <li
+              key={item}
+              className={navClass(item)}
+              onClick={() => handleScroll(item)}
+            >
+              <span className="relative capitalize">
+                {item}
+                <span
+                  className={`absolute left-0 -bottom-1 h-[2px] bg-accent transition-all duration-300
+                    ${active === item ? "w-full" : "w-0"}`}
+                />
+              </span>
+            </li>
+          ))}
         </ul>
 
-        {/* Mobile Menu Button */}
-        <button className="md:hidden text-3xl" onClick={() => setOpen(!open)}>
+        {/* MOBILE BUTTON */}
+        <button
+          className="md:hidden text-3xl text-dark"
+          onClick={() => setOpen(!open)}
+        >
           ☰
         </button>
       </div>
 
-      {/* Mobile Dropdown */}
+      {/* MOBILE MENU */}
       {open && (
-        <ul className="md:hidden bg-white shadow text-xl font-medium p-6 space-y-6 text-center transition-opacity duration-200">
+        <ul className="md:hidden bg-bg shadow-lg text-lg font-medium p-6 space-y-6 text-center">
           <li>
-            <Link to="/about" className="lg:hover:text-red-500">
+            <Link
+              to="/about"
+              className="text-dark hover:text-accent"
+              onClick={() => setOpen(false)}
+            >
               About Me
             </Link>
           </li>
 
-          <li
-            className={navClass("skills")}
-            onClick={() => handleScroll("skills")}
-          >
-            <span className="relative">
-              Skills
-              <span
-                className={`absolute left-0 -bottom-1 h-[2px] bg-red-500 transition-all duration-300
-      ${active === "skills" ? "w-full" : "w-0"}`}
-              />
-            </span>
-          </li>
-
-          <li
-            className={navClass("projects")}
-            onClick={() => handleScroll("projects")}
-          >
-            <span className="relative">
-              Projects
-              <span
-                className={`absolute left-0 -bottom-1 h-[2px] bg-red-500 transition-all duration-300
-      ${active === "projects" ? "w-full" : "w-0"}`}
-              />
-            </span>
-          </li>
-
-          <li
-            className={navClass("blogs")}
-            onClick={() => handleScroll("blogs")}
-          >
-            <span className="relative">
-              Blogs
-              <span
-                className={`absolute left-0 -bottom-1 h-[2px] bg-red-500 transition-all duration-300
-      ${active === "blogs" ? "w-full" : "w-0"}`}
-              />
-            </span>
-          </li>
-
-          <li
-            className={navClass("contact")}
-            onClick={() => handleScroll("contact")}
-          >
-            <span className="relative">
-              Contact
-              <span
-                className={`absolute left-0 -bottom-1 h-[2px] bg-red-500 transition-all duration-300
-      ${active === "contact" ? "w-full" : "w-0"}`}
-              />
-            </span>
-          </li>
+          {["skills", "projects", "blogs", "contact"].map((item) => (
+            <li
+              key={item}
+              className={navClass(item)}
+              onClick={() => handleScroll(item)}
+            >
+              <span className="relative capitalize">
+                {item}
+                <span
+                  className={`absolute left-1/2 -translate-x-1/2 -bottom-1 h-[2px] bg-accent transition-all duration-300
+                    ${active === item ? "w-1/2" : "w-0"}`}
+                />
+              </span>
+            </li>
+          ))}
         </ul>
       )}
     </nav>

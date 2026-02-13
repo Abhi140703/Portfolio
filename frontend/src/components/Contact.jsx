@@ -1,6 +1,5 @@
 import { useState } from "react";
 import api from "../api/api";
-import { Link } from "react-router-dom";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -28,27 +27,42 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-screen bg-gray-100 flex justify-center items-center px-4"
+      className="py-24 bg-gray-50 flex justify-center px-6"
     >
       <form
         onSubmit={handleSubmit}
-        className="bg-white w-full max-w-lg p-8 rounded-2xl shadow-xl space-y-4"
+        className="
+          w-full max-w-lg bg-white
+          p-10 rounded-2xl shadow-lg
+          space-y-6
+        "
       >
-        <h2
-          className="text-3xl font-bold text-center text-[#ffbb02]"
-        >
-          Contact Me
+        {/* TITLE */}
+        <h2 className="text-3xl font-bold text-center text-dark">
+          Get in Touch
         </h2>
 
+        <p className="text-center text-gray-600 text-sm">
+          Have a question or want to work together?  
+          Drop me a message.
+        </p>
+
+        {/* NAME */}
         <input
           name="name"
           placeholder="Your Name"
           value={form.name}
           onChange={handleChange}
           required
-          className="w-full border px-4 py-2 rounded-lg"
+          className="
+            w-full px-4 py-3 rounded-lg
+            border border-gray-300
+            focus:outline-none focus:ring-2
+            focus:ring-primary/40
+          "
         />
 
+        {/* EMAIL */}
         <input
           name="email"
           type="email"
@@ -56,9 +70,15 @@ export default function Contact() {
           value={form.email}
           onChange={handleChange}
           required
-          className="w-full border px-4 py-2 rounded-lg"
+          className="
+            w-full px-4 py-3 rounded-lg
+            border border-gray-300
+            focus:outline-none focus:ring-2
+            focus:ring-primary/40
+          "
         />
 
+        {/* MESSAGE */}
         <textarea
           name="message"
           placeholder="Your Message"
@@ -66,12 +86,23 @@ export default function Contact() {
           onChange={handleChange}
           required
           rows="4"
-          className="w-full border px-4 py-2 rounded-lg"
+          className="
+            w-full px-4 py-3 rounded-lg
+            border border-gray-300
+            resize-none
+            focus:outline-none focus:ring-2
+            focus:ring-primary/40
+          "
         />
 
+        {/* BUTTON */}
         <button
-          className="w-full bg-[#ffbb02] text-white py-3 rounded-lg text-lg border-2 border-black hover:bg-black hover:text-[#ffbb02] 
-       "
+          type="submit"
+          className="
+            w-full py-3 rounded-lg font-semibold
+            bg-primary text-white
+            hover:bg-dark transition
+          "
         >
           Send Message
         </button>

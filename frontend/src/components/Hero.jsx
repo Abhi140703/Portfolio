@@ -3,80 +3,56 @@ import profile from "../assets/profile.jpeg";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden px-6 lg:px-20 py-24">
-      {/* MOBILE YELLOW BACKGROUND (TEXT + IMAGE + BUTTONS) */}
-      <div
-        className="
-          absolute
-          inset-0
-          bg-[#ffbb02]
-          lg:hidden
-          z-0
-        "
-      />
+    <section className="relative min-h-screen overflow-hidden px-6 lg:px-20 py-24 bg-bg">
+      {/* MOBILE BACKGROUND */}
+      <div className="absolute inset-0 bg-primary lg:hidden z-0" />
 
-      {/* GRID LAYOUT */}
+      {/* GRID */}
       <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
         {/* LEFT CONTENT */}
-        <div
-          className="text-center lg:text-left text-gray-800 lg:py-10"
-        >
-          <p className="text-black text-l lg:text-2xl lg:text-[#ffbb02] font-semibold tracking-wide mb-3">
+        <div className="text-center lg:text-left text-dark">
+          <p className="text-sm lg:text-lg font-semibold tracking-widest text-accent mb-3">
             MERN STACK DEVELOPER
           </p>
 
-          <h1
-            className="text-4xl sm:text-5xl text-gray-700 font-bold lg:text-gray-800 leading-tight"
-
-          >
+          <h1 className="text-4xl sm:text-5xl font-bold leading-tight">
             Hello, my name <br /> is Abhishek DungDung
           </h1>
 
-          {/* DESCRIPTION (DESKTOP ONLY HERE) */}
-          <p className="text-gray-700 font-semibold text-xl lg:text-gray-600 mt-6 max-lg:hidden">
+          <p className="mt-6 text-lg text-muted max-lg:hidden">
             I build modern full-stack web applications using MongoDB, Express,
             React, and Node.js.
           </p>
         </div>
 
-        {/* RIGHT IMAGE + DESKTOP BG */}
+        {/* RIGHT IMAGE */}
         <div className="relative flex justify-center items-center">
-          {/* DESKTOP YELLOW CIRCLE */}
+          {/* DESKTOP ACCENT CIRCLE */}
           <div
             className="
-              hidden lg:block
-              absolute
-              bg-[#ffbb02]
-              rounded-full
-              w-[1050px] h-[950px]
-              right-[-425px]
-              top-[-450px]
+              hidden lg:block absolute
+              bg-primary rounded-full
+              w-[950px] h-[950px]
+              right-[-420px] top-[-420px]
             "
           />
 
-          {/* IMAGE */}
           <img
             src={profile}
-            alt="profile"
+            alt="Profile"
             className="
-              relative
-              w-[200px]
-              sm:w-[240px]
-              -mt-20
-
-              lg:absolute
-              lg:right-[-100px]
-              lg:top-[115px]
+              relative z-10
+              w-[220px] sm:w-[260px]
+              lg:absolute lg:w-[460px]
+              lg:right-[-120px] lg:top-1/2
               lg:-translate-y-1/2
-              lg:w-[460px]
-
-              z-10
+              rounded-xl shadow-xl
             "
           />
         </div>
 
         {/* MOBILE DESCRIPTION */}
-        <p className="text-gray-700 text-center text-l lg:hidden -mt-6">
+        <p className="lg:hidden text-center text-muted -mt-6">
           I build modern full-stack web applications using MongoDB, Express,
           React, and Node.js.
         </p>
@@ -84,20 +60,18 @@ export default function Hero() {
         {/* BUTTONS */}
         <div
           className="
-            mt-0
             grid grid-cols-2 gap-4
-            max-w-md
-            mx-auto lg:mx-0
-            lg:flex lg:gap-6
+            max-w-md mx-auto
+            lg:mx-0 lg:flex lg:gap-6
           "
         >
           <Link
             to="/projects"
             className="
               px-6 py-3 rounded-xl font-bold text-center
-              bg-white text-black
-              lg:bg-[#ffbb02] lg:text-white
-              hover:-translate-y-1 transition 
+              bg-white text-dark
+              lg:bg-primary lg:text-white
+              hover:-translate-y-1 transition
             "
           >
             Projects
@@ -110,7 +84,7 @@ export default function Hero() {
             className="
               px-6 py-3 rounded-xl font-semibold text-center
               bg-[#0A66C2] text-white
-              hover:-translate-y-1 transition  
+              hover:-translate-y-1 transition
             "
           >
             LinkedIn
@@ -122,21 +96,20 @@ export default function Hero() {
             rel="noopener noreferrer"
             className="
               px-6 py-3 rounded-xl font-semibold text-center
-              bg-[#24292F] text-white
-              hover:-translate-y-1 transition  
+              bg-dark text-white
+              hover:-translate-y-1 transition
             "
           >
-            Github
+            GitHub
           </a>
 
           <a
             href="/resume.pdf"
             className="
               px-6 py-3 rounded-xl font-bold text-center whitespace-nowrap
-              bg-white text-black
-              lg:bg-[#EF4444]
-              lg:text-white
-              hover:-translate-y-1 transition  
+              bg-white text-dark
+              lg:bg-accent lg:text-white
+              hover:-translate-y-1 transition
             "
           >
             Download CV

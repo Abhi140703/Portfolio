@@ -10,89 +10,84 @@ export default function Blogs() {
   const [loading, setLoading] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
 
-
   useEffect(() => {
     (async () => {
       const res = await api.get("/api/blogs/latest");
       setBlogs(res.data);
-      console.log("BLOGS FROM API:", blogs.map(b => b.title));
       setLoading(false);
     })();
   }, []);
 
   return (
-    <section id="blogs" className="pt-24 pb-12 bg-gray-50">
+    <section id="blogs" className="pt-24 pb-12 bg-bg">
       <div className="max-w-6xl mx-auto px-6">
         {/* HEADER */}
         <div className="flex justify-between items-center mb-12">
-          <h2 className="text-4xl font-bold text-[#ffbb02]">
+          <h2 className="text-4xl font-bold text-dark">
             Latest Blogs
           </h2>
 
           <Link
             to="/blogs"
-            className="text-[#ffbb02] text-lg font-semibold hover:underline"
+            className="text-primary text-lg font-semibold hover:underline"
           >
             View all →
           </Link>
         </div>
 
         {/* CONTENT */}
- {loading ? (
-  <div className="flex justify-center items-center min-h-[320px]">
-    <ArcReactorLoader text="Loading blogs..." />
-  </div>
-) : (
-  <>
-    {/* DESKTOP: ONLY FEATURED BLOG */}
-    {/* DESKTOP FEATURED BLOG WITH ARROWS */}
-<div className="hidden md:block relative">
-  {blogs[activeIndex] && (
-    <BlogCardDesktop blog={blogs[activeIndex]} />
-  )}
+        {loading ? (
+          <div className="flex justify-center items-center min-h-[320px]">
+            <ArcReactorLoader text="Loading blogs..." />
+          </div>
+        ) : (
+          <>
+            {/* DESKTOP FEATURED BLOG */}
+            <div className="hidden md:block relative">
+              {blogs[activeIndex] && (
+                <BlogCardDesktop blog={blogs[activeIndex]} />
+              )}
 
-  {/* LEFT ARROW */}
-  {activeIndex > 0 && (
-   <button
-  onClick={() => setActiveIndex(activeIndex + 1)}
-  className="
-    absolute right-[-60px] top-1/2 -translate-y-1/2
-    w-12 h-12 rounded-full
-    bg-white shadow-lg
-    text-4xl font-bold text-[#ffbb02]
-    hover:scale-110 hover:shadow-xl
-    transition
-  "
->
-  →
-</button>
+              {/* LEFT ARROW */}
+              {activeIndex > 0 && (
+                <button
+                  onClick={() => setActiveIndex(activeIndex - 1)}
+                  className="
+                    absolute left-[-60px] top-1/2 -translate-y-1/2
+                    w-12 h-12 rounded-full
+                    bg-white shadow-lg
+                    text-4xl font-bold text-primary
+                    hover:scale-110 hover:shadow-xl transition
+                  "
+                >
+                  ←
+                </button>
+              )}
 
+              {/* RIGHT ARROW */}
+              {activeIndex < blogs.length - 1 && (
+                <button
+                  onClick={() => setActiveIndex(activeIndex + 1)}
+                  className="
+                    absolute right-[-60px] top-1/2 -translate-y-1/2
+                    w-12 h-12 rounded-full
+                    bg-white shadow-lg
+                    text-4xl font-bold text-primary
+                    hover:scale-110 hover:shadow-xl transition
+                  "
+                >
+                  →
+                </button>
+              )}
+            </div>
 
-  )}
-
-  {/* RIGHT ARROW */}
-  {activeIndex < blogs.length - 1 && (
-    <button
-      onClick={() => setActiveIndex(activeIndex + 1)}
-      className="absolute right-[-50px] top-1/2 -translate-y-1/2
-                 text-3xl text-[#ffbb02] hover:scale-110 transition"
-    >
-      →
-    </button>
-  )}
-</div>
-
-
-    {/* MOBILE: STACK */}
-    <div className="md:hidden">
-      <BlogStack blogs={blogs.slice(0, 3)} />
-    </div>
-  </>
-)}
-
-
+            {/* MOBILE STACK */}
+            <div className="md:hidden">
+              <BlogStack blogs={blogs.slice(0, 3)} />
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
 }
-

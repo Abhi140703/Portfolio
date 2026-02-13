@@ -6,83 +6,61 @@ body {
 @tailwind utilities;
 
 
-.arc-reactor-teal {
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.arc-reactor {
   position: relative;
   width: 90px;
   height: 90px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    white 0%,
-    white 40%,
-    white 70%,
-    #000 80%
-  );
-  box-shadow:
-    0 0 35px rgba(255, 187, 2, 0.6),
-    inset 0 0 22px rgba(255, 80, 0, 0.35);
 }
 
-/* OUTER RED RING */
-.outer-ring {
+.arc-reactor .outer-ring {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 6px dashed rgba(255, 60, 60, 0.7);
-  box-shadow:
-    inset 0 0 15px rgba(255, 60, 60, 0.6),
-    0 0 20px rgba(255, 60, 60, 0.6);
-    animation: spin 10s linear infinite
+  border: 4px solid #392F5A; /* dark */
+  animation: spin 2s linear infinite;
 }
 
-/* YELLOW SEGMENTED RING */
-.segment-ring {
+.arc-reactor .segment-ring {
   position: absolute;
-  inset: 15px;
+  inset: 10px;
   border-radius: 50%;
-  border: 6px dashed rgba(255, 200, 0, 0.95);
-  animation: spinReverse 6s linear infinite;
-  box-shadow: 0 0 22px rgba(255, 200, 0, 0.9);
+  border: 3px dashed #FF8811; /* accent */
+  animation: spin-reverse 1.5s linear infinite;
 }
 
-/* HOT YELLOW CORE */
-.inner-core {
+.arc-reactor .inner-core {
   position: absolute;
-  inset: 33px;
+  inset: 28px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle at top left,
-    #ff22bb,
-    white 55%,
-    #ff22bb 95%,
-    #ff22bb
-  );
-  box-shadow:
-    0 0 40px rgba(255, 200, 0, 1),
-    inset -5px -5px 12px rgba(120, 40, 0, 0.6),
-    inset 5px 5px 12px rgba(255, 255, 255, 0.35);
-  animation: pulse 2s ease-in-out infinite;
+  background: #9DD9D2; /* mint */
+  box-shadow: 0 0 18px rgba(157, 217, 210, 0.7);
 }
 
-/* ANIMATIONS */
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 28px rgba(255, 200, 0, 0.9);
-  }
-  50% {
-    transform: scale(1.15);
-    box-shadow: 0 0 55px rgba(255, 120, 0, 1);
+  to {
+    transform: rotate(360deg);
   }
 }
-@keyframes spinReverse {
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
+
+@keyframes spin-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
 }
 
 
+:root {
+  --primary: #F4D06F;
+  --accent: #FF8811;
+  --muted: #9DD9D2;
+  --bg: #FFF8F0;
+  --dark: #392F5A;
+}
