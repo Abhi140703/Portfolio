@@ -38,7 +38,7 @@ export default function Blogs() {
 
         {/* CONTENT AREA */}
         {loading ? (
-          <div className="flex justify-center items-center min-h-[400px]">
+          <div className="flex justify-center font-bold items-center min-h-[400px]">
             <ArcReactorLoader text="Blogs are loading..." />
           </div>
         ) : (
