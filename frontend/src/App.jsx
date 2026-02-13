@@ -19,9 +19,10 @@ import Blogs from "./components/Blogs";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
-/* BLOG PAGES */
-import BlogList from "./components/BlogList";
-import BlogDetails from "./components/BlogDetails";
+/* BLOG PAGES *//* BLOG PAGES */
+import BlogList from "./pages/BlogList";
+import BlogDetails from "./pages/BlogPage";
+
 
 /* PROJECT PAGES */
 import ProjectList from "./components/ProjectList";
