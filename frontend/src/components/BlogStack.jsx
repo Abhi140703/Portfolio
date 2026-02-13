@@ -89,10 +89,9 @@ export default function BlogStack({ blogs }) {
         })}
       </div>
 
-   <p className="text-xs text-[#ffbb02] mt-2 text-center opacity-80">
+   <p className="relative z-20 pointer-events-none text-xs text-[#ff22bb] mt-6 text-center">
   Drag or scroll to explore blogs
 </p>
-
     </div>
   );
 }
