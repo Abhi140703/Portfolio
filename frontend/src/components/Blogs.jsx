@@ -39,24 +39,23 @@ export default function Blogs() {
 
         {/* CONTENT AREA */}
         {loading ? (
-  <div className="flex justify-center font-bold items-center min-h-[400px]">
+  <div className="flex justify-center items-center min-h-[400px]">
     <ArcReactorLoader text="Blogs are loading..." />
   </div>
 ) : (
   <>
-   {/* DESKTOP */}
-<div className="hidden md:flex flex-col gap-12 items-center">
-  {blogs[0] && <BlogCardDesktop blog={blogs[0]} />}
-  <BlogStack blogs={blogs} />
-</div>
+    {/* DESKTOP */}
+    <div className="hidden md:block">
+      <BlogStackDesktop blogs={blogs} />
+    </div>
 
-{/* MOBILE */}
-<div className="md:hidden">
-  <BlogStack blogs={blogs} />
-</div>
-
+    {/* MOBILE */}
+    <div className="md:hidden">
+      <BlogStack blogs={blogs} />
+    </div>
   </>
 )}
+
 
       </div>
     </section>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../api/api";
 import { Link } from "react-router-dom";
 import BlogStack from "../components/BlogStack";
+console.log("PAGE BlogList rendered");
 
 export default function BlogList() {
   const [blogs, setBlogs] = useState([]);

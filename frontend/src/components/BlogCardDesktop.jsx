@@ -1,40 +1,66 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { motion as Motion } from "framer-motion";
+import BlogCardDesktop from "./BlogCardDesktop";
 
-export default function BlogCardDesktop({ blog }) {
+export default function BlogStackDesktop({ blogs }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isInteracting, setIsInteracting] = useState(false);
+
+  useEffect(() => {
+    if (!blogs || blogs.length <= 1 || isInteracting) return;
+
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % blogs.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [blogs, isInteracting]);
+
+  if (!blogs || blogs.length === 0) return null;
+
   return (
-    <div className="flex w-full max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-black">
-      {/* LEFT: IMAGE */}
-      <div className="w-2/3 h-[360px] lg:h-[380px] overflow-hidden ">
-        <img
-          src={blog.image}
-          alt={blog.title}
-          className="w-full h-full object-cover"
-        />
-      </div>
+    <div
+      className="relative w-full h-[420px] flex items-center justify-center"
+      onWheel={(e) => {
+        setIsInteracting(true);
 
-      {/* RIGHT: CONTENT */}
-      <div className="w-1/3 p-6 flex flex-col justify-between">
-        <div>
-          <p className="text-sm text-[#ffbb02] font-semibold mb-2">
-            {blog.category}
-          </p>
+        if (e.deltaY > 20) {
+          setActiveIndex((prev) => (prev + 1) % blogs.length);
+        } else if (e.deltaY < -20) {
+          setActiveIndex((prev) =>
+            (prev - 1 + blogs.length) % blogs.length
+          );
+        }
 
-          <h3 className="text-2xl font-bold mb-4">
-            {blog.title}
-          </h3>
+        setTimeout(() => setIsInteracting(false), 600);
+      }}
+    >
+      {blogs.map((blog, index) => {
+        const position =
+          (index - activeIndex + blogs.length) % blogs.length;
 
-          <p className="text-gray-600 line-clamp-5">
-            {blog.content}
-          </p>
-        </div>
+        if (position > 2) return null;
 
-        <Link
-          to={`/blogs/${blog.slug}`}
-          className="mt-6 inline-block bg-[#ffbb02] text-black px-5 py-3 rounded-lg border-2 border-black text-center"
-        >
-          Read More →
-        </Link>
-      </div>
+        return (
+          <Motion.div
+            key={blog._id || index}
+            className="absolute w-full max-w-5xl"
+            animate={{
+              y: position * 22,
+              scale: 1 - position * 0.04,
+              opacity: position === 0 ? 1 : 0.65,
+              zIndex: 10 - position,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 120,
+              damping: 18,
+            }}
+          >
+            <BlogCardDesktop blog={blog} />
+          </Motion.div>
+        );
+      })}
     </div>
   );
 }
