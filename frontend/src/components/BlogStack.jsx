@@ -5,6 +5,8 @@ import BlogCard from "./BlogCard";
 export default function BlogStack({ blogs }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isInteracting, setIsInteracting] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
+
 
   // Auto rotation (pauses on interaction)
   useEffect(() => {
@@ -24,6 +26,7 @@ export default function BlogStack({ blogs }) {
       className="relative w-full min-h-[560px] flex flex-col items-center justify-center"
       onWheel={(e) => {
         setIsInteracting(true);
+        setHasInteracted(true);
 
         if (e.deltaY > 30) {
           setActiveIndex((prev) => (prev + 1) % blogs.length);
@@ -52,7 +55,10 @@ export default function BlogStack({ blogs }) {
               drag={position === 0 ? "y" : false}
               dragConstraints={{ top: -80, bottom: 80 }}
               dragElastic={0.15}
-              onDragStart={() => setIsInteracting(true)}
+              onDragStart={() => {
+                setIsInteracting(true);
+                setHasInteracted(true);
+              }}
               onDragEnd={(e, info) => {
                 setIsInteracting(false);
 
@@ -89,9 +95,22 @@ export default function BlogStack({ blogs }) {
         })}
       </div>
 
-   <p className="relative z-20 pointer-events-none text-xs text-[#ff22bb] mt-6 text-center">
-  Drag or scroll to explore blogs
-</p>
+   {!hasInteracted && (
+  <p
+    className="
+      relative z-20 mt-6 text-center text-xs
+      text-[#ffbb02] opacity-80
+      flex items-center justify-center gap-2
+      animate-pulse
+      pointer-events-none
+    "
+  >
+    <span className="text-lg">↑</span>
+    Drag or scroll to explore blogs
+    <span className="text-lg">↓</span>
+  </p>
+)}
+
     </div>
   );
 }
