@@ -37,7 +37,7 @@ export default function BlogStack({ blogs }) {
       }}
     >
       {/* STACK */}
-      <div className="relative w-full flex items-center justify-center">
+      <div className="relative w-full flex items-center justify-center m-10">
         {blogs.map((blog, index) => {
           const position =
             (index - activeIndex + blogs.length) % blogs.length;
@@ -89,9 +89,9 @@ export default function BlogStack({ blogs }) {
         })}
       </div>
 
-      <p className="text-xs text-gray-400 mt-6 text-center">
-        Drag or scroll to explore blogs
-      </p>
+     <p className="text-xs text-[#ff22bb] mt-6 text-center">
+  Drag or scroll to explore blogs
+</p>
     </div>
   );
 }
