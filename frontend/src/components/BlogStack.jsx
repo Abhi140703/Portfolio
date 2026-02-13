@@ -89,8 +89,7 @@ export default function BlogStack({ blogs }) {
         })}
       </div>
 
-      {/* HINT (ONCE, STATIC) */}
-      <p className="text-xs text-gray-400 mt-6 text-center">
+      <p className="text-xs text-ff22bb mt-6 text-center">
         Drag or scroll to explore blogs
       </p>
     </div>
