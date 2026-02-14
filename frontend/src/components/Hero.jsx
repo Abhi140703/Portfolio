@@ -19,7 +19,7 @@ export default function Hero() {
             Hello, my name <br /> is Abhishek DungDung
           </h1>
 
-          <p className="mt-6 text-lg text-muted max-lg:hidden">
+          <p className="mt-6 text-lg text-accent max-lg:hidden">
             I build modern full-stack web applications using MongoDB, Express,
             React, and Node.js.
           </p>
@@ -52,7 +52,7 @@ export default function Hero() {
         </div>
 
         {/* MOBILE DESCRIPTION */}
-        <p className="lg:hidden text-center text-muted -mt-6">
+        <p className="lg:hidden text-center text-dark -mt-6">
           I build modern full-stack web applications using MongoDB, Express,
           React, and Node.js.
         </p>
