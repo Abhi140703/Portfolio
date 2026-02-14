@@ -3,7 +3,7 @@ import profile from "../assets/profile.jpeg";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden px-6 lg:px-20 py-24 bg-bg">
+    <section className="relative min-h-screen overflow-hidden px-6 lg:px-20 lg:py-40 py-24 bg-bg">
       {/* MOBILE BACKGROUND */}
       <div className="absolute inset-0 bg-primary lg:hidden z-0" />
 
@@ -41,7 +41,7 @@ export default function Hero() {
             src={profile}
             alt="Profile"
             className="
-              relative z-10
+              relative z-10 
               w-[220px] sm:w-[260px]
               lg:absolute lg:w-[460px]
               lg:right-[-120px] lg:top-1/2
