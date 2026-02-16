@@ -28,12 +28,12 @@ export default function About() {
 
           {/* CONTENT */}
           <div>
-            <p className="text-sm uppercase tracking-wide text-primary font-semibold mb-4">
+            <p className="text-sm uppercase tracking-wider text-primary font-semibold mb-4">
               About Me
             </p>
 
-            <h2 className="text-4xl font-bold text-dark leading-tight mb-6">
-              I’m Abhishek Dungdung, <br /> a MERN Stack Developer
+            <h2 className="text-4xl tracking-tight font-bold text-dark leading-tight mb-6">
+              I’m Abhishek Dungdung, <br /> a Full-Stack MERN Developer
             </h2>
 
             <p className="text-gray-600 leading-relaxed mb-4">
@@ -44,8 +44,9 @@ export default function About() {
 
             <p className="text-gray-600 leading-relaxed mb-8">
               I enjoy turning complex problems into simple, elegant solutions.
-              Currently, I’m strengthening my backend skills, API design, and
-              modern UI/UX practices.
+Currently, I’m strengthening my backend skills, API design,
+and modern UI/UX practices.
+
             </p>
 
             {/* INFO GRID */}
@@ -59,8 +60,8 @@ export default function About() {
                 Developer
               </p>
               <p>
-                <span className="font-semibold text-dark">Experience:</span>{" "}
-                Fresher
+                <span className="font-semibold text-dark">Experience:</span> Entry-level
+
               </p>
               <p>
                 <span className="font-semibold text-dark">Location:</span> India
