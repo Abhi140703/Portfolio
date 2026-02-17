@@ -30,8 +30,8 @@ export default function ProjectCard({ project }) {
         <Link
           to={`/projects/${_id}`}
           className="
-            inline-block mt-5
-            px-5 py-2
+            inline-block mt-4 mb-6
+            px-2 py-1
             rounded-full
             font-semibold
             border border-primary
