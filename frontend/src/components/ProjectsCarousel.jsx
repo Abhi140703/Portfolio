@@ -125,14 +125,14 @@ export default function ProjectsCarousel({ projects }) {
       {!hasInteracted && (
         <p
           className="
-            absolute bottom-6 z-20
-            text-xs text-primary opacity-80
+            absolute bottom-56 z-20
+            text-s text-primary opacity-80
             flex items-center gap-2
             animate-pulse
             pointer-events-none
           "
         >
-          <span className="text-lg">←</span>
+          <span className="text-lg font-bold">←</span>
           Scroll or swipe to explore projects
           <span className="text-lg">→</span>
         </p>
