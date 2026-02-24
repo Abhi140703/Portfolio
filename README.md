@@ -119,94 +119,20 @@ controllers/  → Business logic
 ```bash
 git clone https://github.com/your-username/ecommerce-mern.git
 cd ecommerce-mern
-2️⃣ Install Backend Dependencies
+
+###2️⃣ Install Backend Dependencies
 cd server
 npm install
-3️⃣ Install Frontend Dependencies
+
+###3️⃣ Install Frontend Dependencies
 cd ../client
 npm install
-4️⃣ Run the Application
+
+###4️⃣ Run the Application
 # Start backend server
 cd server
 npm run server
 
-# Start frontend
-cd ../client
-npm start
-🌐 Live Demo
-
-(Add live deployed link here)
-
-📌 Future Improvements
-
-Payment gateway integration
-
-Admin dashboard
-
-Order management system
-
-👤 Author
-
-Abhishek DungDung
-MERN Stack Developer
-
-
----
-
-## ✅ FINAL README — **Personal Portfolio Website**
-
-👉 Create **`README.md`** in your portfolio repo and paste this:
-
-```md
-# 🌐 Personal Portfolio Website
-
-A personal portfolio website built using React to showcase my projects, skills, and contact information.  
-The website is fully responsive and designed with a clean, professional UI.
-
----
-
-## 🚀 Features
-
-- Developer portfolio layout
-- Projects showcase section
-- Skills and technology stack display
-- Responsive design for all devices
-- Clean UI and smooth navigation
-
----
-
-## 🛠 Tech Stack
-
-- React.js
-- JavaScript
-- HTML5
-- CSS3
-
----
-
-## 📂 Project Structure
-
-src/  
- ├─ components/  
- ├─ pages/  
- ├─ assets/  
- └─ App.js  
-
----
-
-## ⚙️ Installation & Setup
-
-### 1️⃣ Clone the Repository
-
-```bash
-git clone https://github.com/your-username/portfolio-react.git
-cd portfolio-react
-
-2️⃣ Install Dependencies
-npm install
-
-3️⃣ Start the Development Server
-npm start
 
 🌐 Live Website
 https://mernfolio.netlify.app/
