@@ -45,7 +45,7 @@ src/
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/portfolio-react.git
+git clone https://github.com/Abhi140703/Portfolio.git
 cd portfolio-react
 
 Yes 👍 you MUST mention install dependencies — recruiters and reviewers actually look for that.
