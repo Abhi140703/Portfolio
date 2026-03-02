@@ -38,6 +38,7 @@ src/
  ├─ assets/  
  └─ App.js  
 
+<<<<<<< HEAD
 ---
 
 ## ⚙️ Installation & Setup
@@ -49,6 +50,8 @@ git clone https://github.com/Abhi140703/Portfolio.git
 cd portfolio
 
 
+=======
+>>>>>>> cba05304b9436875b586d8ee9c30e69937b8a132
 
 ## ⚙️ Installation & Setup
 
@@ -61,21 +64,21 @@ cd portfolio
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/ecommerce-mern.git
-cd ecommerce-mern
+git clone [https://github.com/Abhi140703/Portfolio.git]
+cd portfolio
 
 ###2️⃣ Install Backend Dependencies
-cd server
+cd backend
 npm install
 
 ###3️⃣ Install Frontend Dependencies
-cd ../client
+cd frontend
 npm install
 
 ###4️⃣ Run the Application
 # Start backend server
-cd server
-npm run server
+cd backend
+node server.js
 
 
 🌐 Live Website
