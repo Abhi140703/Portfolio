@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import profile from "../assets/profile.jpeg";
+import Resume from "../assets/Resume.pdf";
 
 export default function Hero() {
   return (
@@ -107,7 +108,7 @@ Express, React, and Node.js.
           </a>
 
           <a
-            href="/frontend/src/assets/Resume.pdf"
+            href={Resume} download
             className="
               px-6 py-3 rounded-xl font-bold text-center whitespace-nowrap
               bg-accent text-white

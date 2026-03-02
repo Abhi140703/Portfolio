@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import profile from "../assets/profile.jpeg";
+import Resume from "../assets/Resume.pdf";
 
 export default function About() {
   return (
@@ -71,7 +72,7 @@ and modern UI/UX practices.
             {/* ACTIONS */}
             <div className="flex gap-4">
               <a
-                href="/frontend/src/assets/Resume.pdf"
+                href={Resume} download
                 className="
                   px-6 py-3 rounded-lg font-semibold
                   bg-primary text-white
