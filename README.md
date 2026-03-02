@@ -54,7 +54,7 @@ git clone [https://github.com/Abhi140703/Portfolio.git]
 cd ecommerce-mern
 
 ###2️⃣ Install Backend Dependencies
-cd backend
+cd frontend
 npm install
 
 ###3️⃣ Install Frontend Dependencies
