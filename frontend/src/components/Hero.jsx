@@ -107,7 +107,7 @@ Express, React, and Node.js.
           </a>
 
           <a
-            href="/resume.pdf"
+            href="/frontend/src/assets/Resume.pdf"
             className="
               px-6 py-3 rounded-xl font-bold text-center whitespace-nowrap
               bg-accent text-white

@@ -71,7 +71,7 @@ and modern UI/UX practices.
             {/* ACTIONS */}
             <div className="flex gap-4">
               <a
-                href="/resume.pdf"
+                href="/frontend/src/assets/Resume.pdf"
                 className="
                   px-6 py-3 rounded-lg font-semibold
                   bg-primary text-white
